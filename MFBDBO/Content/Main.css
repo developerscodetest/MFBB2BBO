@@ -1,0 +1,51 @@
+﻿ a {
+    text-decoration:none !important;
+    }
+
+.main-header .navbar {
+    margin-left: 0px;
+}
+
+.wrapper {
+    background: #fff !important;
+}
+
+.skin-blue .main-header .logo, .skin-blue .main-header .logo:hover {
+    background-color: transparent;
+}
+
+.tocenter {
+  margin:0 0px auto;
+  display:inline;
+  height: 130px !important;
+   width: 130px !important; 
+     }
+  .heading{
+   font-size: 14px;
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 0.4px;
+     }
+   
+.menu-block {
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    margin: 16px 0px;
+}
+
+.menusection {
+    padding: 40px 0px 0px 50px ;
+}
+
+.navbar-inverse {
+    background-color: #3c8dbc !important;
+    border-color: #3c8dbc !important;
+    border-radius: 0px !important;
+}
+    .navbar-inverse .navbar-brand {
+        color: #fff !important;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #fff !important;
+    }

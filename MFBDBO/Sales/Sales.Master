@@ -1,0 +1,245 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Sales.master.cs" Inherits="MFBDBO.Sales.Sales" %>
+<!DOCTYPE html>
+
+<html>
+   <head runat="server">
+     <title>MFBDBO :: Dashboard</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
+
+  <link href="../plugins/morris/morris.css" rel="stylesheet" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+  <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  <header class="main-header">
+  <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>EXE</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Executive</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-sign-out"></i>Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Admin</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">     
+           <li>
+          <a href="ExecutiveDashboard.aspx">
+            <i class="fa fa-home"></i> <span>Dashboard</span>         
+          </a>
+        </li>
+        <li>
+          <a href="AllBookings.aspx">
+            <i class="fa fa-files-o"></i> <span>All Bookings</span>
+          </a>
+        </li>
+          <li>
+              <a href="OfflineBookings.aspx">
+            <i class="fa fa-files-o"></i>
+            <span>Offline Bookings</span>
+          </a>       
+        </li>
+            <li>
+              <a href="Reconformations.aspx">
+            <i class="fa fa-files-o"></i>
+            <span>Reconfirmations</span>
+          </a>       
+        </li>
+           <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Issues</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="PendingIssues.aspx"><i class="fa fa-circle-o"></i>Pending</a></li>
+            <li><a href="InprocessIssues.aspx"><i class="fa fa-circle-o"></i>In Process</a></li>
+            <li><a href="ResolvedIssues.aspx"><i class="fa fa-circle-o"></i>Resolved</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="MonthWiseReports.aspx"><i class="fa fa-circle-o"></i>Month Wise</a></li>
+            <li><a href="AgentWiseReports.aspx"><i class="fa fa-circle-o"></i>Agent Wise</a></li>
+            <li><a href="StatusWiseReports.aspx"><i class="fa fa-circle-o"></i>Status Wise</a></li>
+          </ul>
+        </li>
+           <li>
+          <a href="../MainDashboard.aspx">
+            <i class="fa fa-angle-right"></i> <span>Back To Dashboard</span>
+          </a>
+        </li>
+
+       
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+   <asp:ContentPlaceHolder ID="SalesPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   <%-- <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.8
+    </div>--%>
+    <strong>Copyright &copy; 2018-2010 <a href="#">Developers Code</a>.</strong> All rights
+    reserved.
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+ <!--app.min.js-->
+ <script src="../dist/js/app.min.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- FLOT CHARTS -->
+<script src="../plugins/flot/jquery.flot.min.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="../plugins/flot/jquery.flot.resize.min.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="../plugins/flot/jquery.flot.pie.min.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="../plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<script src="../../plugins/select2/select2.full.min.js"></script>
+
+<!-- page script -->
+<script type="text/javascript">
+ //Bar Chart
+    $(function () {
+        "use strict";
+        var bar_data = {
+            data: [["Suresh", 12], ["Mahesh", 10], ["Ravi", 4], ["Dinesh", 13], ["Veeresh", 17], ["Sathish", 9], ["Pradeep", 10], ["Surendra", 15], ["Ashok", 20], ["Karthik", 18]],
+            color: "#3c8dbc"
+        };
+        $.plot("#bar-chart", [bar_data], {
+            grid: {
+                borderWidth: 1,
+                borderColor: "#f3f3f3",
+                tickColor: "#f3f3f3"
+            },
+            series: {
+                bars: {
+                    show: true,
+                    barWidth: 0.5,
+                    align: "center"
+                }
+            },
+            xaxis: {
+                mode: "categories",
+                tickLength: 0
+            }
+        });
+    });
+
+//Donut Chart
+    var donutData = [
+      { label: "Pending", data: 60, color: "#3c8dbc" },
+      { label: "Confirmed", data: 40, color: "#00c0ef" }
+    ];
+    var donutData = [
+        { label: "Used", data: 55, color: "#3c8dbc" },
+        { label: "Unused", data: 45, color: "#00c0ef" }
+    ];
+    $.plot("#Rewards", donutData, {
+        series: {
+            pie: {
+                show: true,
+                radius: 1,
+                innerRadius: 0.5,
+                label: {
+                    show: true,
+                    radius: 2 / 3,
+                    formatter: labelFormatter,
+                    threshold: 0.1
+                }
+            }
+        },
+        legend: {
+            show: false
+        }
+    });
+    function labelFormatter(label, series) {
+        return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+            + label
+            + "<br>"
+            + Math.round(series.percent) + "%</div>";
+    }
+
+</script>
+
+</body>
+</html>
