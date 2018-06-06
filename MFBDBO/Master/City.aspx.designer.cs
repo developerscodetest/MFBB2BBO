@@ -10,115 +10,115 @@
 namespace MFBDBO.Master {
     
     
-    public partial class IssuesView {
+    public partial class City {
         
         /// <summary>
-        /// lblBookingID control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBookingID;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ddlBookingID control.
+        /// ddlCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBookingID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
         
         /// <summary>
-        /// lblName2 control.
+        /// rfvCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountry;
         
         /// <summary>
-        /// txtIssue control.
+        /// lblState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssue;
+        protected global::System.Web.UI.WebControls.Label lblState;
         
         /// <summary>
-        /// lblStatus control.
+        /// ddlState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
+        protected global::System.Web.UI.WebControls.DropDownList ddlState;
         
         /// <summary>
-        /// ddlStatus control.
+        /// rfvState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvState;
         
         /// <summary>
-        /// lblPriority control.
+        /// lblCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPriority;
+        protected global::System.Web.UI.WebControls.Label lblCity;
         
         /// <summary>
-        /// ddlPriority control.
+        /// txtCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
-        /// Label3 control.
+        /// rfvCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCity;
         
         /// <summary>
-        /// ddlAssignToEmployee control.
+        /// revCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAssignToEmployee;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCity;
         
         /// <summary>
-        /// lblNote control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNote;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// txtNote control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
         /// btnUpdate control.
@@ -130,21 +130,21 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btnBack control.
+        /// hdnCityID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.HiddenField hdnCityID;
         
         /// <summary>
-        /// hdnIssuesId control.
+        /// gdvCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnIssuesId;
+        protected global::System.Web.UI.WebControls.GridView gdvCity;
     }
 }

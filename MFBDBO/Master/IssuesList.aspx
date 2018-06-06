@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="IssuesList.aspx.cs" Inherits="MFBDBO.Master.IssuesList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-<form runat="server">
+    <form runat="server">
         <section class="content-header">
             <h1>Issues List</h1>
             <ol class="breadcrumb">
@@ -19,34 +23,33 @@
                         <div class="form-group pull-right">
                       <asp:Button ID="btnNewIssue" CssClass="btn btn-primary" PostBackUrl="Issues.aspx"  runat="server" Text="New Issue" />
                         </div>
-                     <table id="IssuesList" class="table table-bordered table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Booking ID</th>
-                                <th>Status</th>
-                                <th>Priority</th>
-                                <th> Employee</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>12334556</td>
-                                <td>Open</td>
-                                <td>High</td>
-                                <td>Pradeep</td>
-                                <td>
-                                     <div class="btn-group text-left">
+                        <asp:GridView ID="gdvIssues" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="False" OnRowDataBound="gdvIssues_RowDataBound" ShowHeader="False">
+                            <Columns>
+                                <asp:BoundField DataField="IssuesId" HeaderText="IssuesId" ItemStyle-CssClass="hidden-bound" >
+                                    <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="BookingID" HeaderText="Booking ID" />
+                                <asp:BoundField DataField="Issue" HeaderText="Issue" />
+                                <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                <asp:BoundField DataField="Priority" HeaderText="Priority" SortExpression="Priority" />
+                                <asp:BoundField DataField="AssignToEmployee" HeaderText="Assign To Employee" SortExpression="AssignToEmployee" />
+                                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
+                                <asp:TemplateField HeaderText="Actions">
+                                    <ItemTemplate>
+                                        <div class="btn-group text-left">
                                             <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                                             <ul class="dropdown-menu pull-right" role="menu">
-                                           <li><a href="IssuesView.aspx"><i class="fa fa-file-text-o"></i>View</a></li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnView" runat="server" Text="View" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' OnClick="lbtnView_Click" ><i class="fa fa-file-text-o"></i>View</asp:LinkButton>
+                                                </li>                                                
                                             </ul>
                                         </div>
-                                </td>
-                            </tr>
-                           
-                        </tbody>
-                    </table>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+
+                        </asp:GridView>
+                     
                     </div>
                 </div>
             </div>
@@ -76,11 +79,44 @@
         <script type="text/javascript">
             //Data Table Function
 
-            $('#IssuesList').dataTable({
+            $("#AdminPlaceHolder_gdvIssues").prepend($("<thead><tr><th class='hidden-bound'>IssuesID</th><th>BookingID</th><th>Issue</th><th>Status</th><th>Priority</th><th>Assign To Employee</th><th>Note</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvIssues").css('width', '100%');
+            $("#AdminPlaceHolder_gdvIssues").dataTable({
                 "pageLength": 50,
-                dom: 'frtip',
-                responsive: true
-               
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+
+                ]
             });
 
         </script>

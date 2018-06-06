@@ -10,115 +10,79 @@
 namespace MFBDBO.Master {
     
     
-    public partial class IssuesView {
+    public partial class state {
         
         /// <summary>
-        /// lblBookingID control.
+        /// lblDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBookingID;
+        protected global::System.Web.UI.WebControls.Label lblDepartment;
         
         /// <summary>
-        /// ddlBookingID control.
+        /// DDlCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBookingID;
+        protected global::System.Web.UI.WebControls.DropDownList DDlCountry;
         
         /// <summary>
-        /// lblName2 control.
+        /// rfvCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountry;
         
         /// <summary>
-        /// txtIssue control.
+        /// lblState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssue;
+        protected global::System.Web.UI.WebControls.Label lblState;
         
         /// <summary>
-        /// lblStatus control.
+        /// txtState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtState;
         
         /// <summary>
-        /// ddlStatus control.
+        /// rfvState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvState;
         
         /// <summary>
-        /// lblPriority control.
+        /// revState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPriority;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revState;
         
         /// <summary>
-        /// ddlPriority control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
-        
-        /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// ddlAssignToEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAssignToEmployee;
-        
-        /// <summary>
-        /// lblNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNote;
-        
-        /// <summary>
-        /// txtNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
         /// btnUpdate control.
@@ -130,21 +94,30 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btnBack control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// hdnIssuesId control.
+        /// hdnStateID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnIssuesId;
+        protected global::System.Web.UI.WebControls.HiddenField hdnStateID;
+        
+        /// <summary>
+        /// gdvState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvState;
     }
 }
