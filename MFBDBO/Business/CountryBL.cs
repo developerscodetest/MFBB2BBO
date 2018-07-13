@@ -45,7 +45,7 @@ namespace MFBDBO.Business
             return objCountryDA.CountryAll(7, ls);
         }
 
-        public IEnumerable<Countrytbl> GetCountryByStatus(Countrytbl ls)
+        public IEnumerable<Countrytbl> GetCountryByIsActive(Countrytbl ls)
         {
             return objCountryDA.CountryAll(8, ls);
         }

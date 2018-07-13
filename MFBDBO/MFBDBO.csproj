@@ -43,6 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -76,11 +84,20 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.11\lib\net452\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -133,7 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Files\AgentDocuments\" />
+    <Folder Include="Files\Payments\" />
+    <Folder Include="Files\Receipts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -256,6 +275,7 @@
     <Content Include="dist\img\MainDashboard\operation.png" />
     <Content Include="dist\img\MainDashboard\user.png" />
     <Content Include="dist\img\MainDashboard\user2.png" />
+    <Content Include="dist\img\pexels-photo-518244.jpeg" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\photo3.jpg" />
@@ -373,24 +393,30 @@
     <Content Include="build\less\users-list.less" />
     <Content Include="build\less\variables.less" />
     <Content Include="HRM\HRMDashboard.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="MainDashboard.aspx" />
     <Content Include="Master\Accounts.aspx" />
     <Content Include="Master\ActiveAgents.aspx" />
     <Content Include="Master\AddEmployee.aspx" />
     <Content Include="Master\AddPayment.aspx" />
+    <Content Include="Master\AgentSettings.aspx" />
+    <Content Include="Master\AllBookings.aspx" />
     <Content Include="Master\Attendance.aspx" />
+    <Content Include="Master\Banks.aspx" />
+    <Content Include="Master\BanksList.aspx" />
+    <Content Include="Master\City.aspx" />
+    <Content Include="Master\Controls\DynamicRoom.ascx" />
     <Content Include="Master\Country.aspx" />
     <Content Include="Master\Designation.aspx" />
     <Content Include="Master\Documents.aspx" />
     <Content Include="Master\EmployeeAttendance.aspx" />
     <Content Include="Master\EmployeeList.aspx" />
     <Content Include="Master\AdminDashboard.aspx" />
-    <Content Include="Master\AgentSettings.aspx" />
     <Content Include="Master\AgentsView.aspx" />
     <Content Include="Master\AgentWiseReports.aspx" />
-    <Content Include="Master\AllBookings.aspx" />
     <Content Include="Master\Credits.aspx" />
     <Content Include="Master\EmployeeView.aspx" />
+    <Content Include="Master\FinancialYearList.aspx" />
     <Content Include="Master\GenerateInvoice.aspx" />
     <Content Include="Master\HoldAgents.aspx" />
     <Content Include="Master\InactiveAgents.aspx" />
@@ -402,7 +428,9 @@
     <Content Include="Master\IssuesList.aspx" />
     <Content Include="Master\IssuesView.aspx" />
     <Content Include="Master\Leads.aspx" />
+    <Content Include="Master\MajorAccountList.aspx" />
     <Content Include="Master\MarginSettings.aspx" />
+    <Content Include="Master\MinorAccountList.aspx" />
     <Content Include="Master\MonthlyReport.aspx" />
     <Content Include="Master\MonthlyTargets.aspx" />
     <Content Include="Master\AssignTargets.aspx" />
@@ -414,6 +442,14 @@
     <Content Include="Master\PaymentsList.aspx" />
     <Content Include="Master\Payroll.aspx" />
     <Content Include="Master\Payslips.aspx" />
+    <Content Include="Master\PrepareAReceiptsView.aspx" />
+    <Content Include="Master\PreparePayments.aspx" />
+    <Content Include="Master\PreparePaymentsEdit.aspx" />
+    <Content Include="Master\PreparePaymentsView.aspx" />
+    <Content Include="Master\ReceiptDetails.aspx" />
+    <Content Include="Master\Receipts.aspx" />
+    <Content Include="Master\ReceiptsEdit.aspx" />
+    <Content Include="Master\ReceiptsList.aspx" />
     <Content Include="Master\Registrations.aspx" />
     <Content Include="Master\RegistrationView.aspx" />
     <Content Include="Master\Role.aspx" />
@@ -421,7 +457,9 @@
     <Content Include="Master\SalaryReport.aspx" />
     <Content Include="Master\SalaryTemplate.aspx" />
     <Content Include="Master\SalaryTemplateView.aspx" />
+    <Content Include="Master\state.aspx" />
     <Content Include="Master\StatusWiseReports.aspx" />
+    <Content Include="Master\SupplierAPIDetails.aspx" />
     <Content Include="Master\SupplierEdit.aspx" />
     <Content Include="Master\Suppliers.aspx" />
     <Content Include="Master\SuppliersList.aspx" />
@@ -429,9 +467,6 @@
     <Content Include="Master\Users.aspx" />
     <Content Include="Master\View.aspx" />
     <Content Include="Master\YearlyReport.aspx" />
-    <Content Include="obj\Debug\MFBDBO.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\MFBDBO.dll" />
-    <Content Include="obj\Debug\MFBDBO.pdb" />
     <Content Include="OPS\AllBookings.aspx" />
     <Content Include="OPS\OPSDashboard.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
@@ -1233,6 +1268,11 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Reports\BookingByAgents.aspx" />
+    <Content Include="Reports\BookingByReport.aspx" />
+    <Content Include="Reports\BookingBySuppliers.aspx" />
+    <Content Include="Reports\CheckinReport.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="SalesManagement\ActiveAgents.aspx" />
     <Content Include="SalesManagement\AgentWiseReports.aspx" />
     <Content Include="SalesManagement\Credits.aspx" />
@@ -1293,13 +1333,12 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\MFBDBO.csprojResolveAssemblyReference.cache" />
     <Content Include="SalesManagement\SalesManagement.Master" />
     <Content Include="Master\Admin.Master" />
     <Content Include="OPS\OPS.Master" />
     <Content Include="Accounts\Accounts.Master" />
     <Content Include="HRM\HRM.Master" />
+    <Content Include="Reports\Reports.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
@@ -1373,6 +1412,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="TestRoomControl.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1412,6 +1452,39 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\AccPaymentsBL.cs" />
+    <Compile Include="Business\AccReceiptsBL.cs" />
+    <Compile Include="Business\AccReceiptsInVoicesBL.cs" />
+    <Compile Include="Business\AgentsBL.cs" />
+    <Compile Include="Business\AllBookingsBL.cs" />
+    <Compile Include="Business\BankBL.cs" />
+    <Compile Include="Business\BookingDetailsBL.cs" />
+    <Compile Include="Business\BookingRequestBL.cs" />
+    <Compile Include="Business\CityBL.cs" />
+    <Compile Include="Business\CountryBL.cs" />
+    <Compile Include="Business\CuntryDocumentBL.cs" />
+    <Compile Include="Business\DepartmentBL.cs" />
+    <Compile Include="Business\DesignationBL.cs" />
+    <Compile Include="Business\EmployeeBL.cs" />
+    <Compile Include="Business\FinancialYearListBL.cs" />
+    <Compile Include="Business\GuestDetailsBL.cs" />
+    <Compile Include="Business\HotelDetailsBL.cs" />
+    <Compile Include="Business\IssuesBL.cs" />
+    <Compile Include="Business\LeadsBL.cs" />
+    <Compile Include="Business\LoginBL.cs" />
+    <Compile Include="Business\MajorAccountBL.cs" />
+    <Compile Include="Business\MinorAccountBL.cs" />
+    <Compile Include="Business\ReconfirmationBL.cs" />
+    <Compile Include="Business\RegistrationBL.cs" />
+    <Compile Include="Business\ReportsBL.cs" />
+    <Compile Include="Business\RoleBL.cs" />
+    <Compile Include="Business\RoomDetailsBL.cs" />
+    <Compile Include="Business\StateBL.cs" />
+    <Compile Include="Business\SupplierAPIBL.cs" />
+    <Compile Include="Business\SuppliersBL.cs" />
+    <Compile Include="Business\TeamBL.cs" />
+    <Compile Include="Business\UserBL.cs" />
+    <Compile Include="Business\UsersBL.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1419,6 +1492,40 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Data\AccPaymentsDA.cs" />
+    <Compile Include="Data\AccReceiptsDA.cs" />
+    <Compile Include="Data\AccReceiptsInVoicesDA.cs" />
+    <Compile Include="Data\AgentsDA.cs" />
+    <Compile Include="Data\AllBookingsDA.cs" />
+    <Compile Include="Data\BankDA.cs" />
+    <Compile Include="Data\BookingDetailsDA.cs" />
+    <Compile Include="Data\BookingRequestDA.cs" />
+    <Compile Include="Data\CityDA.cs" />
+    <Compile Include="Data\Common.cs" />
+    <Compile Include="Data\CountryDA.cs" />
+    <Compile Include="Data\CuntryDocumentDA.cs" />
+    <Compile Include="Data\DepartmentDA.cs" />
+    <Compile Include="Data\DesignationDA.cs" />
+    <Compile Include="Data\EmployeeDA.cs" />
+    <Compile Include="Data\FinancialYearListDA.cs" />
+    <Compile Include="Data\GuestDetailsDA.cs" />
+    <Compile Include="Data\HotelDetailsDA.cs" />
+    <Compile Include="Data\IssuesDA.cs" />
+    <Compile Include="Data\LeadsDA.cs" />
+    <Compile Include="Data\LoginDA.cs" />
+    <Compile Include="Data\MajorAccountDA.cs" />
+    <Compile Include="Data\MinorAccountDA.cs" />
+    <Compile Include="Data\ReconfirmationDA.cs" />
+    <Compile Include="Data\RegistrationDA.cs" />
+    <Compile Include="Data\ReportsDA.cs" />
+    <Compile Include="Data\RoleDA.cs" />
+    <Compile Include="Data\RoomDetailsDA.cs" />
+    <Compile Include="Data\StateDA.cs" />
+    <Compile Include="Data\SupplierAPIDA.cs" />
+    <Compile Include="Data\SuppliersDA.cs" />
+    <Compile Include="Data\TeamDA.cs" />
+    <Compile Include="Data\UserDA.cs" />
+    <Compile Include="Data\UsersDA.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1442,6 +1549,13 @@
     </Compile>
     <Compile Include="HRM\HRMDashboard.aspx.designer.cs">
       <DependentUpon>HRMDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainDashboard.aspx.cs">
       <DependentUpon>MainDashboard.aspx</DependentUpon>
@@ -1478,12 +1592,54 @@
     <Compile Include="Master\AddPayment.aspx.designer.cs">
       <DependentUpon>AddPayment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\AgentSettings.aspx.cs">
+      <DependentUpon>AgentSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AgentSettings.aspx.designer.cs">
+      <DependentUpon>AgentSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AllBookings.aspx.cs">
+      <DependentUpon>AllBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AllBookings.aspx.designer.cs">
+      <DependentUpon>AllBookings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Attendance.aspx.cs">
       <DependentUpon>Attendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\Attendance.aspx.designer.cs">
       <DependentUpon>Attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Banks.aspx.cs">
+      <DependentUpon>Banks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Banks.aspx.designer.cs">
+      <DependentUpon>Banks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\BanksList.aspx.cs">
+      <DependentUpon>BanksList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\BanksList.aspx.designer.cs">
+      <DependentUpon>BanksList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\City.aspx.cs">
+      <DependentUpon>City.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\City.aspx.designer.cs">
+      <DependentUpon>City.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Controls\DynamicRoom.ascx.cs">
+      <DependentUpon>DynamicRoom.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Controls\DynamicRoom.ascx.designer.cs">
+      <DependentUpon>DynamicRoom.ascx</DependentUpon>
     </Compile>
     <Compile Include="Master\Country.aspx.cs">
       <DependentUpon>Country.aspx</DependentUpon>
@@ -1534,13 +1690,6 @@
     <Compile Include="Master\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Master\AgentSettings.aspx.cs">
-      <DependentUpon>AgentSettings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Master\AgentSettings.aspx.designer.cs">
-      <DependentUpon>AgentSettings.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Master\AgentsView.aspx.cs">
       <DependentUpon>AgentsView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1555,13 +1704,6 @@
     <Compile Include="Master\AgentWiseReports.aspx.designer.cs">
       <DependentUpon>AgentWiseReports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Master\AllBookings.aspx.cs">
-      <DependentUpon>AllBookings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Master\AllBookings.aspx.designer.cs">
-      <DependentUpon>AllBookings.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Master\Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1575,6 +1717,13 @@
     </Compile>
     <Compile Include="Master\EmployeeView.aspx.designer.cs">
       <DependentUpon>EmployeeView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FinancialYearList.aspx.cs">
+      <DependentUpon>FinancialYearList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\FinancialYearList.aspx.designer.cs">
+      <DependentUpon>FinancialYearList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\GenerateInvoice.aspx.cs">
       <DependentUpon>GenerateInvoice.aspx</DependentUpon>
@@ -1653,12 +1802,26 @@
     <Compile Include="Master\Leads.aspx.designer.cs">
       <DependentUpon>Leads.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\MajorAccountList.aspx.cs">
+      <DependentUpon>MajorAccountList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\MajorAccountList.aspx.designer.cs">
+      <DependentUpon>MajorAccountList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\MarginSettings.aspx.cs">
       <DependentUpon>MarginSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\MarginSettings.aspx.designer.cs">
       <DependentUpon>MarginSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\MinorAccountList.aspx.cs">
+      <DependentUpon>MinorAccountList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\MinorAccountList.aspx.designer.cs">
+      <DependentUpon>MinorAccountList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\MonthlyReport.aspx.cs">
       <DependentUpon>MonthlyReport.aspx</DependentUpon>
@@ -1737,6 +1900,62 @@
     <Compile Include="Master\Payslips.aspx.designer.cs">
       <DependentUpon>Payslips.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\PrepareAReceiptsView.aspx.cs">
+      <DependentUpon>PrepareAReceiptsView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PrepareAReceiptsView.aspx.designer.cs">
+      <DependentUpon>PrepareAReceiptsView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PreparePayments.aspx.cs">
+      <DependentUpon>PreparePayments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PreparePayments.aspx.designer.cs">
+      <DependentUpon>PreparePayments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PreparePaymentsEdit.aspx.cs">
+      <DependentUpon>PreparePaymentsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PreparePaymentsEdit.aspx.designer.cs">
+      <DependentUpon>PreparePaymentsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PreparePaymentsView.aspx.cs">
+      <DependentUpon>PreparePaymentsView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PreparePaymentsView.aspx.designer.cs">
+      <DependentUpon>PreparePaymentsView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\ReceiptDetails.aspx.cs">
+      <DependentUpon>ReceiptDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ReceiptDetails.aspx.designer.cs">
+      <DependentUpon>ReceiptDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Receipts.aspx.cs">
+      <DependentUpon>Receipts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Receipts.aspx.designer.cs">
+      <DependentUpon>Receipts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\ReceiptsEdit.aspx.cs">
+      <DependentUpon>ReceiptsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ReceiptsEdit.aspx.designer.cs">
+      <DependentUpon>ReceiptsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\ReceiptsList.aspx.cs">
+      <DependentUpon>ReceiptsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ReceiptsList.aspx.designer.cs">
+      <DependentUpon>ReceiptsList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Registrations.aspx.cs">
       <DependentUpon>Registrations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1786,12 +2005,26 @@
     <Compile Include="Master\SalaryTemplateView.aspx.designer.cs">
       <DependentUpon>SalaryTemplateView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\state.aspx.cs">
+      <DependentUpon>state.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\state.aspx.designer.cs">
+      <DependentUpon>state.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\StatusWiseReports.aspx.cs">
       <DependentUpon>StatusWiseReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\StatusWiseReports.aspx.designer.cs">
       <DependentUpon>StatusWiseReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\SupplierAPIDetails.aspx.cs">
+      <DependentUpon>SupplierAPIDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\SupplierAPIDetails.aspx.designer.cs">
+      <DependentUpon>SupplierAPIDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\SupplierEdit.aspx.cs">
       <DependentUpon>SupplierEdit.aspx</DependentUpon>
@@ -1842,9 +2075,6 @@
     <Compile Include="Master\YearlyReport.aspx.designer.cs">
       <DependentUpon>YearlyReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="OPS\AllBookings.aspx.cs">
       <DependentUpon>AllBookings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1867,6 +2097,48 @@
       <DependentUpon>OPSDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BookingByAgents.aspx.cs">
+      <DependentUpon>BookingByAgents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BookingByAgents.aspx.designer.cs">
+      <DependentUpon>BookingByAgents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BookingByReport.aspx.cs">
+      <DependentUpon>BookingByReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BookingByReport.aspx.designer.cs">
+      <DependentUpon>BookingByReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CheckinReport.aspx.cs">
+      <DependentUpon>CheckinReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CheckinReport.aspx.designer.cs">
+      <DependentUpon>CheckinReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Reports.Master.cs">
+      <DependentUpon>Reports.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Reports.Master.designer.cs">
+      <DependentUpon>Reports.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BookingBySuppliers.aspx.cs">
+      <DependentUpon>BookingBySuppliers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BookingBySuppliers.aspx.designer.cs">
+      <DependentUpon>BookingBySuppliers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SalesManagement\ActiveAgents.aspx.cs">
       <DependentUpon>ActiveAgents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2083,6 +2355,13 @@
     </Compile>
     <Compile Include="Sales\StatusWiseReports.aspx.designer.cs">
       <DependentUpon>StatusWiseReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestRoomControl.aspx.cs">
+      <DependentUpon>TestRoomControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestRoomControl.aspx.designer.cs">
+      <DependentUpon>TestRoomControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

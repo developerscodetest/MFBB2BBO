@@ -20,7 +20,7 @@ namespace MFBDBO.Data
                 MySqlCommand cmd = new MySqlCommand("Sp_Country", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("type", type);
-
+                
                 cmd.Parameters.AddWithValue("pCountryID", ls.CountryID);
                 cmd.Parameters.AddWithValue("pCountryName", ls.CountryName);
                 cmd.Parameters.AddWithValue("pCurrency", ls.Currency);
@@ -74,10 +74,6 @@ namespace MFBDBO.Data
             return obj;
         }
     }
-    
-
-    
-
     public class Countrytbl
     {
         public int CountryID { get; set; }

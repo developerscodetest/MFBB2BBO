@@ -8,7 +8,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Issues</h1>
             <ol class="breadcrumb">
@@ -25,11 +25,12 @@
                                 <div class="col-md-12">
                                     <asp:Label ID="lblBookingID" CssClass="control-label col-sm-2" runat="server" Text="BookingID"><b>Booking ID :</b></asp:Label>
                                     <div class="col-sm-5">
-                                        <asp:DropDownList ID="ddlBookingID" CssClass="form-control" runat="server">
+                                        <%--<asp:DropDownList ID="ddlBookingID" CssClass="form-control" runat="server">
                                             <asp:ListItem Enabled="true" Text="--Select--"></asp:ListItem>
                                             <asp:ListItem Enabled="true" Text="1"></asp:ListItem>
                                             <asp:ListItem Enabled="true" Text="2"></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
+                                    <asp:TextBox ID="txtBookingId" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                                 <div class="col-md-12">
                                     <asp:Label ID="lblName2" CssClass="control-label col-sm-2" runat="server" Text="Name"><b>Issue :</b></asp:Label>
                                     <div class="col-sm-5">                                        
-                                        <asp:TextBox ID="txtIssue" CssClass="form-control" runat="server" TextMode="MultiLine" Height="100"></asp:TextBox>
+                                        <asp:TextBox ID="txtIssue" CssClass="form-control" runat="server" style="resize:none" TextMode="MultiLine" Height="100"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -73,11 +74,12 @@
                                 <div class="col-md-12">
                                     <asp:Label ID="Label3" CssClass="control-label col-sm-2" runat="server" Text="Name"><b>Assign To Employee :</b></asp:Label>
                                     <div class="col-sm-5">
-                                        <asp:DropDownList ID="ddlAssignToEmployee" CssClass="form-control" runat="server">
+                                       <%-- <asp:DropDownList ID="ddlAssignToEmployee" CssClass="form-control" runat="server">
                                             <asp:ListItem Enabled="true" Text="--Select--"></asp:ListItem>
                                             <asp:ListItem Enabled="true" Text="-11-"></asp:ListItem>
                                             <asp:ListItem Enabled="true" Text="-21-"></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
+                                        <asp:TextBox ID="txtATOEmployee" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +87,7 @@
                                 <div class="col-md-12">
                                     <asp:Label ID="lblNote" CssClass="control-label col-sm-2" runat="server" Text="Note"><b>Note :</b><span style="color:red">*</span></asp:Label>
                                     <div class="col-sm-5">
-                                        <asp:TextBox ID="txtNote" CssClass="form-control" runat="server" TextMode="MultiLine" Height="100"></asp:TextBox>
+                                        <asp:TextBox ID="txtNote" CssClass="form-control" runat="server" Style="resize:none" TextMode="MultiLine" Height="100"></asp:TextBox>
                                     </div>                                    
                                 </div>
                             </div>
@@ -101,5 +103,5 @@
                 </div>
             </div>
         </section>
-    </form>
+    
 </asp:Content>

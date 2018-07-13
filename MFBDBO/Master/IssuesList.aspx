@@ -7,7 +7,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Issues List</h1>
             <ol class="breadcrumb">
@@ -33,7 +33,7 @@
                                 <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                                 <asp:BoundField DataField="Priority" HeaderText="Priority" SortExpression="Priority" />
                                 <asp:BoundField DataField="AssignToEmployee" HeaderText="Assign To Employee" SortExpression="AssignToEmployee" />
-                                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
+                                <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" ItemStyle-CssClass="hidden-bound" />
                                 <asp:TemplateField HeaderText="Actions">
                                     <ItemTemplate>
                                         <div class="btn-group text-left">
@@ -79,42 +79,42 @@
         <script type="text/javascript">
             //Data Table Function
 
-            $("#AdminPlaceHolder_gdvIssues").prepend($("<thead><tr><th class='hidden-bound'>IssuesID</th><th>BookingID</th><th>Issue</th><th>Status</th><th>Priority</th><th>Assign To Employee</th><th>Note</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvIssues").prepend($("<thead><tr><th class='hidden-bound'>IssuesID</th><th>BookingID</th><th>Issue</th><th>Status</th><th>Priority</th><th>Assign To Employee</th><th  class='hidden-bound'>Note</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
             $("#AdminPlaceHolder_gdvIssues").css('width', '100%');
             $("#AdminPlaceHolder_gdvIssues").dataTable({
                 "pageLength": 50,
                 dom: 'Bfrtip',
                 buttons: [
-                    {
-                        extend: 'copy',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5]
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5]
-                        }
-                    },
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4, 5]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4, 5]
+                    //    }
+                    //},
                     {
                         extend: 'excel',
                         exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5]
                         }
                     },
-                    {
-                        extend: 'pdf',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5]
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5]
-                        }
-                    },
+                    //{
+                    //    extend: 'pdf',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4, 5]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4, 5]
+                    //    }
+                    //},
 
                 ]
             });
@@ -122,5 +122,5 @@
         </script>
 
 
-      </form>
+      
 </asp:Content>

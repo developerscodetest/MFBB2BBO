@@ -1,9 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="PaymentsList.aspx.cs" Inherits="MFBDBO.Master.PaymentsList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function alertMessage(text) {
+            alert(text);
+        }
+      </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Payments List</h1>
             <ol class="breadcrumb">
@@ -21,59 +31,74 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                         <div class="form-group pull-right">
-                            <asp:Button ID="btnAP" class="btn btn-primary" runat="server" Text="Add Payment" />
+                            <asp:Button ID="btnAP" PostBackUrl="PreparePayments.aspx" class="btn btn-primary" runat="server" Text="Add Payment" />
                         </div>
                   
                     <!--2nd Row-->
 
                     <!--Table-->
                     <!--Table-->
-                    <table id="paymentList" class="table table-bordered table-striped">
+                    <%--<table id="paymentList" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Inv Details</th>
-                                <th>Transaction No</th>
-                                <th>Agency</th>
-                                <th>Agent</th>
-                                <th>Amount</th>
-                                <th>Payment</th>
-                                <th>Balance</th>
-                                <th>Status</th>
+                                <th>Voucher No</th>
+                                <th>Date</th>
+                                <th>Payment Type</th>
                                 <th>Actions</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span><b>INV NO :</b> 123456</span><br />
-                                    <span><b>INV Date :</b> 29-04-2018</span>
-                                </td>
-                               <td>123456</td>
-                                <td>SVR Services<br />
-                                    <span><b>Staff  :</b> Karthik</span><br />
-
-                                </td>
-                                <td>Ramesh<br />
-                                    <span><b>Mobile :</b> 9876543210</span>
-                                </td>
-                                <td><span><b>Total :</b> 20000</span><br />
-                                    <span><b>Due Date :</b>29-05-2018</span><br />
-                                </td>
-                                <td><span><b>Amount :</b> 1000</span><br />
-                                    <span><b>Date : </b>29-05-2018</span><br />
-                                </td>
-                                <td>10000</td>
-                                <td><span class="dtr-data"><span class="label label-danger">Due</span></span></td>
+                                <td>PAY-319717</td>
+                               <td>25-06-2018</td>
+                                <td>Against Purchase</td>
                                 <td>
                                     <div class="btn-group text-left">
                                         <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                                         <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="AddPayment.aspx"><i class="fa fa-file-text-o"></i>View</a></li>
+                                             <li><a href=""><i class="fa fa-edit"></i>Edit</a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i>View</a></li>
                                         </ul>
                                     </div>
                                 </td>
                         </tbody>
-                    </table>
+                    </table>--%>
+
+                    <asp:GridView ID="gdvAccPayments" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="False"  ShowHeader="False" OnRowDataBound="GdvAccPayments_RowDataBound">
+                            <Columns>
+                                <asp:BoundField DataField="PaymentID" HeaderText="PaymentID" ItemStyle-CssClass="hidden-bound" >
+                                    <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                                </asp:BoundField>     
+                                <asp:BoundField DataField="VoucherNo" HeaderText="Voucher No" />
+                                <asp:BoundField DataField="ToAccount" HeaderText="Paid To" />
+                                <asp:BoundField DataField="PaymentDate" HeaderText="Date" /> 
+                                <asp:BoundField DataField="PaymentThrough" HeaderText="Payment Through" /> 
+                                <asp:BoundField DataField="PayingAmount" HeaderText="Paying Amount" />
+                                <asp:TemplateField HeaderText="Actions">
+                                    <ItemTemplate>
+                                        <div class="btn-group text-left">
+                                            <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnPEdit" runat="server" Text="Edit"  OnClick="lbtnPEdit_Click" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>                                                        
+                                                    <%--<asp:Button ID="btnBack" class="btn btn-danger" PostBackUrl="SuppliersList.aspx" runat="server" Text="Back" style="width: 90px" />--%>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnPView" runat="server"  Text="View" OnClick="lbtnPView_Click" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'  ><i class="fa fa-file-text-o"></i>View</asp:LinkButton>
+                                                </li>                                                    
+                                               <%-- <li>
+                                                    <asp:LinkButton ID="lbtnPMarkAsInActive" runat="server" OnClick="lbtnPMarkAsActive_Click" Text="Mark As InActive"  CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Mark As InActive</asp:LinkButton>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnPMarkAsActive" runat="server" OnClick="lbtnPMarkAsActive_Click"  Text="Mark As Active"  CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Mark As Active</asp:LinkButton>
+                                                </li>    --%>                                            
+                                            </ul>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
 
                 </div>
                 <!-- /.box-body -->
@@ -100,15 +125,53 @@
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
 
         <script type="text/javascript">
-            //Data Table Function
-            $('#paymentList').dataTable({
-                "pageLength": 50,
-                dom: 'frtip',
-                responsive: true,
+            //Data Table Function           
+
+            $("#AdminPlaceHolder_gdvAccPayments").prepend($("<thead><tr><th class='hidden-bound'>PaymentID</th><th>Voucher No</th><th>Paid To</th><th>Date</th><th>Payment Through</th><th>Paying Amount</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvAccPayments").css('width', '100%');
+            $("#AdminPlaceHolder_gdvAccPayments").dataTable({
+                "pageLength": 10,
+                dom: 'Bfrtip',
+
+                //buttons: [
+                //    'copy', 'csv', 'excel', 'pdf', 'print'
+                //]
+                buttons: [
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //},
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    //{
+                    //    extend: 'pdf',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //}
+                ]
+               
             });
+
         </script>
 
-
-
-    </form>
+    
 </asp:Content>

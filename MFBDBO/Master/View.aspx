@@ -1,10 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="MFBDBO.Master.View" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function alertMessage(text) {
+            alert(text);
+        }
+      </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+  
         <section class="content-header">
             <h1>Booking Details</h1>
             <ol class="breadcrumb">
@@ -12,252 +22,311 @@
                 <li class="active">Booking Details</li>
             </ol>
         </section>
-        <section class="content">
+         <section class="content">
             <div class="box">
-                <div class="box-header"></div>
-                <!-- /.box-header -->
+              <div class="box-header with-border">
+                 <h4 class="box-title">Booking Details</h4>
+                </div>
                 <div class="box-body">
-                    <form>
-                        <div class="form-group row">
+                    <!--1st row--->
+                     <div class="form-group row">
                             <div class="col-md-6">
-                                <asp:Label ID="lblBooking" class="control-label col-sm-4" runat="server" Text="Label"><b>Booking ID :</b>
+                                <asp:Label ID="lblBookingID" class="control-label col-sm-4" runat="server" Text="Booking ID :"><b>SupplierBooking ID :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblID" class="control-label col-sm-4" runat="server" Text="Label">123143657
+                                    <asp:Label ID="lblBID" class="control-label " runat="server" Text="123143657">
                                     </asp:Label>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <asp:Label ID="lblBookingDate" class="control-label col-sm-4" runat="server" Text="Label"><b>Booking Date :</b>
+                                <asp:Label ID="lblBookingDate" class="control-label col-sm-4" runat="server" Text="Booking Date :"><b>Booking Date :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblDate" class="control-label col-sm-4" runat="server" Text="Label">23-05-2018
+                                    <asp:Label ID="lblDate" class="control-label " runat="server" Text="23-05-2018">
                                     </asp:Label>
                                 </div>
                             </div>
                         </div>
                         <!--2nd row-->
-                        <div class="form-group row">
+                      <div class="form-group row">
                             <div class="col-md-6">
-                                <asp:Label ID="lblHotelName" class="control-label col-sm-4" runat="server" Text="Label"><b>Hotel Name :</b>
+                                <asp:Label ID="lblSupplier" class="control-label col-sm-4" runat="server" Text="Supplier :"><b>Supplier :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblName" class="control-label col-sm-4" runat="server" Text="Label">Taj Krishna
+                                    <asp:Label ID="lblSName" class="control-label " runat="server" Text="Yathra">
                                     </asp:Label>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <asp:Label ID="lblAddress" class="control-label col-sm-4" runat="server" Text="Label"><b>Address :</b>
+                                <asp:Label ID="lblReceived" class="control-label col-sm-4" runat="server" Text="Received :"><b>Received :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblAdrs" class="control-label col-sm-4" runat="server" Text="Label">xyssadsg
+                                    <asp:Label ID="lblRec" class="control-label " runat="server" Text="Offline">
                                     </asp:Label>
                                 </div>
                             </div>
                         </div>
-
-                        <!--3rd row-->
+                      <!--3rd row-->
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <asp:Label ID="lblContact" class="control-label col-sm-4" runat="server" Text="Label"><b>Contact :</b>
+                                <asp:Label ID="lblAgency" class="control-label col-sm-4" runat="server" Text="Agency :"><b>Agency :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblNo" class="control-label col-sm-4" runat="server" Text="Label">9876543210
+                                    <asp:Label ID="lblAgencyName" class="control-label " runat="server" Text="xysss">
                                     </asp:Label>
                                 </div>
                             </div>
-
+                            <div class="col-md-6">
+                                <asp:Label ID="lblAgencyContact" class="control-label col-sm-4" runat="server" Text="Agent Contact :"><b>Agent Contact :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblAgencyCNo" class="control-label " runat="server" Text="9876543210">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                      <!--4th row-->
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <asp:Label ID="lblCancellation" class="control-label col-sm-4" runat="server" Text="Cancellation :"><b>Cancellation :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblCancel" class="control-label " runat="server" Text="Non-Refundable">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <asp:Label ID="lblDeadline" class="control-label col-sm-4" runat="server" Text="Deadline :"><b>Deadline :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblDeadlineDate" class="control-label " runat="server" Text="30-05-2018">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    <!--5th row-->
+                        <div class="form-group row">
+                             <div class="col-md-6">
+                                <asp:Label ID="lblAgentBookingID" class="control-label col-sm-4" runat="server" Text="AgentBooking ID :"><b>AgentBooking ID :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblABID" class="control-label " runat="server" Text="123143657">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                <!--Hotel Details-->
+                 <div class="box-header with-border">
+                 <h4 class="box-title">Hotel Details</h4>
+                </div>
+                  <div class="box-body">
+                     <!--5th row-->
+                         <div class="form-group row">
+                            <div class="col-md-6">
+                                <asp:Label ID="lblHotelName" class="control-label col-sm-4" runat="server" Text="Hotel Name :"><b>Hotel Name :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblHName" class="control-label " runat="server" Text="Taj Krishna">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <asp:Label ID="lblContactNo" class="control-label col-sm-4" runat="server" Text="Contact No :"><b>Contact No :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblCNo" class="control-label " runat="server" Text="9876543210">
+                                    </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                       <!--6th row-->
+                        <div class="form-group row">
+                           <div class="col-md-6">
+                                <asp:Label ID="lblAddress" class="control-label col-sm-4" runat="server" Text="Address :"><b>Address :</b>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:Label ID="lblAdrs" class="control-label " runat="server" Text="xyssadsg">
+                                    </asp:Label>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <asp:Label ID="lblLocation" class="control-label col-sm-4" runat="server" Text="Label"><b>Location :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblLctn" class="control-label col-sm-4" runat="server" Text="Label">Hyderabad
+                                    <asp:Label ID="lblLctn" class="control-label " runat="server" Text="Label">Hyderabad
                                     </asp:Label>
                                 </div>
                             </div>
                         </div>
-                        <!--4th row-->
+                         <!--7th row-->
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <asp:Label ID="lblCheckIn" class="control-label col-sm-4" runat="server" Text="Label"><b>Check-In :</b>
+                                <asp:Label ID="lblCheckIn" class="control-label col-sm-4" runat="server" Text="Check-In :"><b>Check-In :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblCheckInDate" class="control-label col-sm-4" runat="server" Text="Label">22-05-2018
+                                    <asp:Label ID="lblCheckInDate" class="control-label " runat="server" Text="22-05-2018">
                                     </asp:Label>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <asp:Label ID="lblCheckOut" class="control-label col-sm-4" runat="server" Text="Label"><b>Check-Out :</b>
+                                <asp:Label ID="lblCheckOut" class="control-label col-sm-4" runat="server" Text="Check-Out :"><b>Check-Out :</b>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:Label ID="lblCheckOutDate" class="control-label col-sm-4" runat="server" Text="Label">25-05-2018
+                                    <asp:Label ID="lblCheckOutDate" class="control-label " runat="server" Text="25-05-2018">
                                     </asp:Label>
                                 </div>
                             </div>
                         </div>
-                        <!--5th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblSupplier" class="control-label col-sm-4" runat="server" Text="Label"><b>Supplier :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblSName" class="control-label col-sm-4" runat="server" Text="Label">Yathra
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblReceived" class="control-label col-sm-4" runat="server" Text="Label"><b>Received :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblOff" class="control-label col-sm-4" runat="server" Text="Label">Offline
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--6th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAgency" class="control-label col-sm-4" runat="server" Text="Label"><b>Agency :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblAgencyName" class="control-label col-sm-4" runat="server" Text="Label">xysss
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAgencyContact" class="control-label col-sm-4" runat="server" Text="Label"><b>Agent Contact :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblAgencyNo" class="control-label col-sm-4" runat="server" Text="Label">9876543210
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--7th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblCancellation" class="control-label col-sm-4" runat="server" Text="Label"><b>Cancellation :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblNR" class="control-label col-sm-6" runat="server" Text="Label">Non-Refundable
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblDeadline" class="control-label col-sm-4" runat="server" Text="Label"><b>Deadline :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblDeadlineDate" class="control-label col-sm-4" runat="server" Text="Label">30-05-2018
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--8th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAdults" class="control-label col-sm-4" runat="server" Text="Label"><b>Adults :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblANo" class="control-label col-sm-6" runat="server" Text="Label">2
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblkids" class="control-label col-sm-4" runat="server" Text="Label"><b>Kids :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblKidsNo" class="control-label col-sm-4" runat="server" Text="Label">1
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--9th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblGuestDetails" class="control-label col-sm-4" runat="server" Text="Label"><b>Guest Details :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblGDname" class="control-label col-sm-6" runat="server" Text="Label">1. Prasanth
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!--Table-->
-                    <div class="box-header">
-                        <h4><b>Room Details</b></h4>
-                    </div>
-                    <table id="ViewTable" class="table table-bordered datatable table-striped" style="width: 100%">
+                   </div>
+                 <!--Guest Details-->
+                 <div class="box-header with-border">
+                 <h4 class="box-title">Guest Details</h4>
+                </div>
+                <!--Table-->
+                  <div class="box-body">
+              <%--<table class="table table-bordered datatable table-striped" style="width: 100%">
                         <thead>
                             <tr>
-                                <th>Room</th>
-                                <th>Type</th>
-                                <th>Rate</th>
-                                <th>No Of Days</th>
-                                <th>Total Price</th>
-
+                                <th>Room #</th>
+                                <th>Room Type</th>
+                                <th>Rate per Room</th>
+                                <th>Guest Details</th>
+                                <th>Adults</th>
+                                <th>Kids</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>101</td>
+                                <td>Room-1</td>
                                 <td>Executive Room</td>
                                 <td>1000</td>
+                                <td>Mr Mohammed Ali Khan </td>
                                 <td>2</td>
-                                <td>2000</td>
+                                <td>1</td>
                             </tr>
                         </tbody>
-                    </table>
-                    <br />
+                    </table>--%>
+
+                      <asp:GridView ID="gdvAllBookings" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="false"  ShowHeader="false" OnRowDataBound="GdvAllBookings_RowDataBound1">
+                            <Columns> 
+                                <%--// RoomDetailsId, BookingDetailsId, Adults, Kids, RoomType, Price--%>
+                                <asp:BoundField DataField="AllBookingstc.BookingDetailsId" HeaderText="BookingDetailsId" ItemStyle-CssClass="hidden-bound" >
+                                    <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                                </asp:BoundField>    
+                                <asp:BoundField DataField="Roomstc.RoomDetailsId" HeaderText="Room" />
+                                <asp:BoundField DataField="Roomstc.RoomType" HeaderText="Room Type" />
+                                <asp:BoundField DataField="Roomstc.Price" HeaderText="Rate Per Room" />
+                                <asp:BoundField DataField="Gueststc.FirstName" HeaderText="Guest Details" />
+                                <asp:BoundField DataField="Roomstc.Adults" HeaderText="Adults" />
+                                <asp:BoundField DataField="Roomstc.Kids" HeaderText="Kids" />
+                                <%--<asp:BoundField DataField="Agentstc.ReferredBy" HeaderText="Price" />
+                                <asp:BoundField DataField="AllBookingstc.Status" HeaderText="Status" />                               
+                                <asp:TemplateField HeaderText="Actions">--%>
+                                    <%--<ItemTemplate>
+                                        <div class="btn-group text-left">                                
+                                            <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                           <li><a href="View.aspx"><i class="fa fa-file-text-o"></i>View</a></li>
+                                            </ul>
+                                        </div>
+                                    </ItemTemplate>--%>
+                                <%--</asp:TemplateField>--%>
+                            </Columns>
+                        </asp:GridView>
+                      </div>
+                 <!--Booking Amount Breakup-->
+                    <div class="box-header with-border">
+                        <h4>Booking Amount Breakup</h4>
+                    </div>
+                <div class="box-body">
+                 <%--<table class="table table-bordered datatable table-striped" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Room Type</th>
+                                <th>Inclusion</th>
+                                <th>No.Of Rooms</th>
+                                <th>Amount</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Double Room</td>
+                                <td>Breakfast</td>
+                                <td>1</td>
+                                <td>28250.00</td>
+                                <td>28250.00</td>
+                            </tr>
+                        </tbody>
+                    </table>--%>
+
+                    <asp:GridView ID="GridView1" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="false"  ShowHeader="false" OnRowDataBound="GdvAllBookings_RowDataBound2" >
+                            <Columns>                                 
+                                <asp:BoundField DataField="AllBookingstc.BookingDetailsId" HeaderText="BookingDetailsId" ItemStyle-CssClass="hidden-bound" >
+                                    <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                                </asp:BoundField>                                    
+                                <asp:BoundField DataField="Roomstc.RoomType" HeaderText="Room Type" />
+                                <asp:BoundField DataField="Roomstc.Price" HeaderText="Inclusions" />
+                                <asp:BoundField DataField="AllBookingstc.NoofRooms" HeaderText="No. of Rooms" />
+                                <asp:BoundField DataField="AllBookingstc.AgentPrice" HeaderText="Amount Per Room" />
+                                <%--<asp:BoundField DataField="Roomstc.Kids" HeaderText="Total Amount" />--%>                                
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                     <div class="form-group row">
-                        <div class="col-md-3 col-md-offset-9">
+                        <div class="col-md-3 col-md-offset-8">
                             <div class="form-group">
-                                <asp:Label ID="Label1" class="control-label col-sm-4" runat="server" Text="Label"><b>Total :</b>
-                                </asp:Label>
-                                <asp:Label ID="Label2" class="control-label col-sm-4" runat="server" Text="Label">INR1234
+                                <asp:Label ID="lblTotal" class="control-label col-sm-4" runat="server" Text =" Total :">Total :</asp:Label>
+                                <asp:Label ID="lblTotalAmount" class="control-label col-sm-8" runat="server" Text="INR 28250.00"><b>INR 28250.00</b>
                                 </asp:Label>
                             </div>
                         </div>
                     </div>
-                    <p>&nbsp;</p>
-                      <form>
+                  <!--Deatils-->
+                      <div class="box-body">
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <asp:Label ID="lblAName" class="control-label col-sm-4" runat="server" Text="Label"><b>Confirmation ID :</b>
+                                <asp:Label ID="lblAName" class="control-label col-sm-4" runat="server" Text="Confirmation ID :"><b>Confirmation ID :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtAName" class="form-control" placeholder="Enter Confirmation ID" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtConfID" class="form-control" placeholder="Enter Confirmation ID" runat="server"></asp:TextBox>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
-                                <asp:Label ID="lblCP" class="control-label col-sm-4" runat="server" Text="Contact Person"><b>Re-Confirmation ID :</b> <span style="color: red;">*</span>
+                                <asp:Label ID="lblCP" class="control-label col-sm-4" runat="server" Text="Re-Confirmation ID :"><b>Re-Confirmation ID :</b> <span style="color: red;">*</span>
                                 </asp:Label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtContactPerson" class="form-control" placeholder="Enter Re-Confirmation ID" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtReConfID" class="form-control" placeholder="Enter Re-Confirmation ID" runat="server"></asp:TextBox>
                                 </div>
                             </div>
-
                         </div>
-                    </form>
 
-                    <div class="footer-bottom pull-right">
-                   <asp:Button ID="btnSave" CssClass="btn btn-primary" runat="server" Text="Save" style="width:100px;" />
-                  <asp:Button ID="Button1" CssClass="btn btn-danger" PostBackUrl="AllBookings.aspx" runat="server" Text="Back" style="width:100px;" />
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <asp:Label ID="lblFCDate" class="control-label col-sm-4" runat="server" Text="Cancellation Date : "><b>Cancellation Date :</b>
+                              </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:TextBox ID="txtFCDate" class="form-control" disabled placeholder="11-07-2018" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <asp:Label ID="lblStaffName" class="control-label col-sm-4" runat="server" Text="Staff Name :"><b>Staff  Name:</b> <span style="color: red;">*</span>
+                                </asp:Label>
+                                <div class="col-sm-8">
+                                    <asp:TextBox ID="txtStaffName" class="form-control" disabled placeholder="NA" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                      <!--Button-->
+                     <div class="footer-bottom pull-right">
+                           <asp:Button ID="btnUpdate" CssClass="btn btn-primary" runat="server" Text="Update" style="width:100px"/>
+                           <asp:Button ID="Button1" CssClass="btn btn-danger" PostBackUrl="AllBookings.aspx" runat="server" Text="Back" style="width:100px;" /> 
                     </div>
-
-
-                </div>
+                      </div>
             </div>
         </section>
-  <!-- jQuery 2.2.3 -->
+        <!-- jQuery 2.2.3 -->
         <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!--Data Tables-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
@@ -280,14 +349,16 @@
         <script type="text/javascript">
             //Data Table Function
 
-            $('#ViewTable').dataTable({
-                "pageLength": 50,
-                dom: 'frtip',
-                responsive: true
-               
-            });
+            $("#AdminPlaceHolder_gdvAllBookings").prepend($("<thead><tr><th class='hidden-bound'>BookingDetailsId</th><th>Room</th><th>Room Type</th><th>Rate Per Room</th><th>Guest Details</th><th>Adults</th><th>Kids</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvAllBookings").css('width', '100%');
+            $("#AdminPlaceHolder_GridView1").prepend($("<thead><tr><th class='hidden-bound'>BookingDetailsId</th><th>Room Type</th><th>Inclusions</th><th>No. of Rooms</th><th>Amount Per Room</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_GridView1").css('width', '100%');
+            //$("#AdminPlaceHolder_gdvAllBookings").dataTable({
+            //    "pageLength": 10,
+            //    dom: 'Bfrtip',
+
+
+            //});
 
         </script>
-
-    </form>
 </asp:Content>

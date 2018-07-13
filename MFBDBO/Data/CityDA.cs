@@ -52,7 +52,7 @@ namespace MFBDBO.Data
                             Message = "Success",
                         });
                     }
-
+                dr.Close();
 
                 }
                 catch (Exception ex)

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-     <form runat="server">
+     
         <section class="content-header">
             <h1>Status Wise Reports</h1>
             <ol class="breadcrumb">
@@ -11,5 +11,5 @@
                  <li class="active">Status Wise</li>
             </ol>
         </section>
-    </form>
+    
 </asp:Content>

@@ -77,7 +77,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="SalesPlaceHolder" runat="server">
-    <form id="leadForm" runat="server">
+    
         <section class="content-header">
             <h1>Leads</h1>
             <ol class="breadcrumb">
@@ -135,8 +135,8 @@
                             </asp:Label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEmail" class="form-control" placeholder="Enter Email Address" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Email is required" ControlToValidate="txtEmail" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Enter Valid Email" ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>
+                                <%--<asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Email is required" ControlToValidate="txtEmail" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="revEmail" runat="server" ErrorMessage="Enter Valid Email" ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"></asp:RegularExpressionValidator>--%>
                             </div>
                         </div>
 
@@ -171,7 +171,7 @@
 
                                         <!--Tab1-->
                                         <div class="tab-pane fade in active" id="Leads">
-                                            <asp:GridView ID="gdvLeads" class="table table-bordered datatable table-striped" runat="server" AutoGenerateColumns="False" ShowHeader="False" OnSelectedIndexChanged="gdvLeads_SelectedIndexChanged" DataKeyNames="LID">
+                                            <asp:GridView ID="gdvLeads" class="table table-bordered datatable table-striped" EmptyDataText="No Records Found" ShowHeaderWhenEmpty="true"  ShowHeader="false" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gdvLeads_SelectedIndexChanged" DataKeyNames="LID">
                                                 <Columns>
                                                     <asp:BoundField DataField="LID" HeaderText="LID" ItemStyle-CssClass="hidden-bound" />
                                                     <asp:BoundField DataField="AgencyName" HeaderText="Agency Name" />
@@ -308,7 +308,7 @@
 
             </div>
         </section>
-    </form>
+    
 
     <!-- jQuery 2.2.3 -->
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -339,21 +339,21 @@
             $("#" + gridname).prepend($("<thead><tr><th class='hidden-bound'>LID</th><th>Agency Name</th><th>Contact Person</th><th>Mobile No</th><th>Email</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
             $("#" + gridname).css('width', '100%');
             $("#" + gridname).dataTable({
-                "pageLength": 50,
+                "pageLength": 10,
                 dom: 'Bfrtip',
                 buttons: [
-                    {
-                        extend: 'copy',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
                     {
                         extend: 'excel',
                         exportOptions: {
@@ -366,12 +366,12 @@
                             columns: [0, 1, 2, 3]
                         }
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
                     //{
                     //    extend: 'copyHtml5',
                     //    exportOptions: {

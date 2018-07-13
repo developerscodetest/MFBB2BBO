@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SalesPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Team Targets List </h1>
             <ol class="breadcrumb">
@@ -168,7 +168,7 @@
             });
 
         </script>
-    </form>
+    
 </asp:Content>
 
 

@@ -8,7 +8,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Issues</h1>
             <ol class="breadcrumb">
@@ -26,12 +26,13 @@
                                     <asp:Label ID="lblBookingID" CssClass="control-label col-sm-2" runat="server" Text="BookingID"><b>Booking ID : </b><span style="color:red">*</span></asp:Label>
                                     <div class="col-sm-5">
                                         <asp:DropDownList ID="ddlBookingID" CssClass="form-control" runat="server">
-                                            <asp:ListItem Text="--Select--"></asp:ListItem>
+                                            <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
                                             <asp:ListItem Text="1"></asp:ListItem>
                                             <asp:ListItem Text="2"></asp:ListItem>
                                         </asp:DropDownList>
+                                        <%--<asp:TextBox ID="txtBookingId" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>--%>
                                     </div>
-                                    <asp:RequiredFieldValidator ID="rfvBookingID" ControlToValidate="ddlBookingID" runat="server" ErrorMessage="*" ForeColor="Red" Text="Select BookingID" InitialValue="--Select--"></asp:RequiredFieldValidator>
+                                    <%--<asp:RequiredFieldValidator ID="rfvBookingID" ControlToValidate="ddlBookingID" runat="server" ErrorMessage="Select BookingID" ForeColor="Red"  InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -78,14 +79,15 @@
                                     <div class="col-sm-5">
                                         <asp:DropDownList ID="ddlAssignToEmployee" CssClass="form-control" runat="server">
                                             <asp:ListItem Text="--Select--"></asp:ListItem>
-                                            <asp:ListItem Text="-11-"></asp:ListItem>
-                                            <asp:ListItem Text="-21-"></asp:ListItem>
+                                            <%--<asp:ListItem Text="-11-"></asp:ListItem>
+                                            <asp:ListItem Text="-21-"></asp:ListItem>--%>
                                         </asp:DropDownList>
+                                        <%--<asp:TextBox ID="txtATOEmployee" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>--%>
                                     </div>
                                     <asp:RequiredFieldValidator ID="rfvAssignToEmployee" ControlToValidate="ddlAssignToEmployee" runat="server" ErrorMessage="*" ForeColor="Red" Text="Select Assign To Employee" InitialValue="--Select--"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                           <%-- <div class="form-group row">
                                 <div class="col-md-12">
                                     <asp:Label ID="lblNote" CssClass="control-label col-sm-2" runat="server" Text="Note"><b>Note :</b><span style="color:red">*</span></asp:Label>
                                     <div class="col-sm-5">
@@ -93,7 +95,7 @@
                                     </div>
                                     <asp:RequiredFieldValidator ID="rfvNote" ControlToValidate="txtNote" runat="server" ErrorMessage="*" ForeColor="Red" Text="Note is Required" ></asp:RequiredFieldValidator>
                                 </div>
-                            </div>
+                            </div>--%>
                             <div style="text-align: right">
                                 <asp:Button ID="btnSave" CssClass="btn btn-success" runat="server" Text="Save" Style="width: 90px" OnClick="btnSave_Click" />                                
                                 <asp:Button ID="btnReset" CssClass="btn btn-danger" runat="server" Text="Reset" Style="width: 90px" OnClick="btnReset_Click" CausesValidation="false" />
@@ -105,5 +107,5 @@
                 </div>
             </div>
         </section>
-    </form>    
+        
 </asp:Content>

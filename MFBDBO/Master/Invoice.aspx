@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-     <form runat="server">
+     
         <section class="content-header">
             <h1>Invoice List</h1>
             <ol class="breadcrumb">
@@ -147,5 +147,5 @@
             });
 
         </script>
-    </form>
+    
 </asp:Content>

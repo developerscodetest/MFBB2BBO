@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Incentives </h1>
             <ol class="breadcrumb">
@@ -76,5 +76,5 @@
         <!-- jQuery 2.2.3 -->
 
 
-    </form>
+    
 </asp:Content>

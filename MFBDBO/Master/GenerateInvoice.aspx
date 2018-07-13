@@ -3,7 +3,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-  <form runat="server">
+  
         <section class="content-header">
             <h1>Generate Invoice</h1>
             <ol class="breadcrumb">
@@ -98,5 +98,5 @@
 
         </section>
 
-      </form>
+      
 </asp:Content>

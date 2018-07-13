@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AccountsPlaceHolder" runat="server">
 
- <form runat="server">
+ 
  <section class="content-header">
         <h1>Dashboard
         </h1>

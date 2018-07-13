@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="Credits.aspx.cs" Inherits="MFBDBO.Master.Credits" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Credits.aspx.cs" Inherits="MFBDBO.Master.Credits" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-     <form runat="server">
+     
         <section class="content-header">
             <h1>Credit Details</h1>
             <ol class="breadcrumb">
@@ -20,34 +20,35 @@
                             <div class="col-md-6">
               <asp:Label ID="lblName" class="control-label col-sm-3" runat="server" Text="Name"><b>Agency :</b></asp:Label>
                                 <div class="col-sm-9">
-          <select class="form-control select2">
-                                <option>All</option>
-                                   <option>Kaveri Travels</option>
-                                   <option></option>
-                                   <option></option>
-                                   <option></option>
-                            </select>
+                                    <asp:DropDownList ID="DDLAgencyTravels" CssClass="form-control"  runat="server">
+                                                <asp:ListItem>All</asp:ListItem>
+                                                <asp:ListItem>Kaveri Travels</asp:ListItem>
+                                                <asp:ListItem>Morning Star Travels</asp:ListItem>
+                                            <asp:ListItem>Siri Travels</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvATravels" runat="server" ErrorMessage="Select Agency Travels" ForeColor="Red" ControlToValidate="DDLAgencyTravels" InitialValue="All" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                               <div class="col-md-6">
                               <asp:Label ID="lblAC" class="control-label col-sm-3" runat="server" Text="Assign Credit"><b>Assign Credit :</b></asp:Label>
                                 <div class="col-sm-9">
                             <asp:TextBox ID="txtAC" CssClass="form-control" placeholder="" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvACredit" runat="server" ErrorMessage="Credit Amount is Required" ForeColor="Red" ControlToValidate="txtAC" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="refACredit" runat="server" ErrorMessage="Enter Amount " ForeColor="Red" ControlToValidate="txtAC" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                         </div>
-                       
                         <div class="form-group row">
                             <div class="col-md-6">
                                  <asp:Label ID="lblDueDate" class="control-label col-sm-3" runat="server" Text="Date"><b>Due Date :</b></asp:Label>
                                 <div class="col-sm-9">
                        <div class="input-group date">
-                             <asp:TextBox ID="txtDueDate" type="date" CssClass="form-control" runat="server"></asp:TextBox>
+                             <asp:TextBox ID="txtDueDate" type="date" CssClass="form-control" runat="server"></asp:TextBox>                          
                              <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
                                   </div>
-                                   
+                                   <asp:RequiredFieldValidator ID="rfvDate" runat="server" ErrorMessage="Date is Required" ForeColor="Red"  ControlToValidate="txtDueDate" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -60,7 +61,7 @@
 
                         <div style="text-align: right">
                          <asp:Button ID="btnSave" class="btn btn-success"  runat="server" Text="Save" style="width: 90px" />
-                          <asp:Button ID="btnReset" class="btn btn-danger"  runat="server" Text="Reset" style="width: 90px" />                                             
+                          <asp:Button ID="btnReset" class="btn btn-danger"  runat="server" Text="Reset" style="width: 90px" CausesValidation="False" />                                             
                         </div>
                         <br />
                         <!--Table-->
@@ -133,5 +134,5 @@
 
 
 
-    </form>
+    
 </asp:Content>

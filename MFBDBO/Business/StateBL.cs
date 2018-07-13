@@ -54,5 +54,15 @@ namespace MFBDBO.Business
         {
             return objStateDA.StateAll(9, st);
         }
+
+        public IEnumerable<Statetbl> GetStateByStateIdIsActive(Statetbl st)
+        {
+            return objStateDA.StateAll(10, st);
+        }
+
+        public IEnumerable<Statetbl> GetStateByCountryIdIsActive(Statetbl st)
+        {
+            return objStateDA.StateAll(11, st);
+        }
     }
 }

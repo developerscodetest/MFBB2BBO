@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-     <form runat="server">
+     
  <section class="content-header">
       <h1>Employee Attendamnce</h1>
         <ol class="breadcrumb">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
              </div>
     </section>
   <!-- jQuery 2.2.3 -->
@@ -78,5 +78,5 @@
         </script>
 
 
-</form>
+
 </asp:Content>

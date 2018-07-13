@@ -27,19 +27,19 @@ namespace MFBDBO.Master
                 GetCity();
             }
         }
-
         protected void GetCountry()
         {
             List<Countrytbl> lstCountry = new List<Countrytbl>();
             Countrytbl ctry = new Countrytbl();
             CountryBL objcountryBL = new CountryBL();
-            lstCountry = objcountryBL.GetAllCountry(ctry).ToList();
+            ctry.IsActive = 1;
+            lstCountry = objcountryBL.GetCountryByIsActive(ctry).ToList();
             foreach (var cnt in lstCountry)
             {
                 ListItem li = new ListItem();
                 li.Text = cnt.CountryName;
                 li.Value = cnt.CountryID.ToString();
-                ddlCountry.Items.Add(li);                
+                ddlCountry.Items.Add(li);
             }
         }
 
@@ -50,12 +50,13 @@ namespace MFBDBO.Master
             Statetbl ste = new Statetbl();
             ste.CountryID = CountryID;
             StateBL objstatebl = new StateBL();
-            lststate = objstatebl.GetStateByCountryID(ste).ToList();
-            ListItem l = new ListItem();
+            ste.IsActive = 1;
+            lstState = objStateBL.GetStateByCountryIdIsActive(ste).ToList();
+                ListItem l = new ListItem();
             l.Text = "--Select--";
             l.Value = 0.ToString();
             ddlState.Items.Add(l);
-            foreach (var st in lststate)
+            foreach (var st in lstState)
             {
                 ListItem li = new ListItem();
                 li.Text = st.StateName;
@@ -63,7 +64,6 @@ namespace MFBDBO.Master
                 ddlState.Items.Add(li);
             }
         }
-
         protected void GetCity()
         {
             Citytbl ct = new Citytbl();
@@ -72,7 +72,6 @@ namespace MFBDBO.Master
             gdvCity.DataSource = lst;
             gdvCity.DataBind();
             btnUpdate.Visible = false;
-
         }
         protected void InsertCity()
         {
@@ -88,8 +87,9 @@ namespace MFBDBO.Master
             lst = objCityBl.InsertCity(ct).ToList();
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('Data Inserted Successfully');", true);
             btnSave.Visible = true;
+            GetCity();
+            
         }
-
         internal void Reset()
         {
             ddlCountry.SelectedIndex = 0;
@@ -105,9 +105,6 @@ namespace MFBDBO.Master
             Reset();
 
         }
-
-
-
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetState(Convert.ToInt32(ddlCountry.SelectedValue));
@@ -149,8 +146,6 @@ namespace MFBDBO.Master
             var val = gvr.DataItemIndex;
             var id = Convert.ToInt32(gvr.Cells[0].Text);
             GetCitybyID(id);
-
-
         }
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -163,13 +158,12 @@ namespace MFBDBO.Master
             ct.UpdatedDate = DateTime.Now.ToString();
             List<Citytbl> lst = new List<Citytbl>();
             lst = objCityBl.UpdateCity(ct).ToList();
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('Lead Updated Successfully');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('City Updated Successfully');", true);
             Reset();
-
+            GetCity();
             btnUpdate.Visible = false;
             btnSave.Visible = true;
         }
-
         protected void lbtnLEdit_Click(object sender, EventArgs e)
         {
             LinkButton lbtn = (LinkButton)sender;
@@ -178,9 +172,6 @@ namespace MFBDBO.Master
             var id = Convert.ToInt32(gvr.Cells[0].Text);
             GetCitybyID(id);
         }
-
-
-
         protected void gdvcity_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -198,7 +189,8 @@ namespace MFBDBO.Master
 
                 var lst = lstState;
                 var val = lst.OfType<Statetbl>().Where(s => s.StateID == Convert.ToInt32(e.Row.Cells[1].Text));
-                e.Row.Cells[1].Text = val.First().StateName;
+
+                e.Row.Cells[1].Text = val.Count() <= 0 ? "" : val.First().StateName;
 
             }
 

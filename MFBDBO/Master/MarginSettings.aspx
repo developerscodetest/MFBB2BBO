@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="MarginSettings.aspx.cs" Inherits="MFBDBO.Master.MarginSettings" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="MarginSettings.aspx.cs" Inherits="MFBDBO.Master.MarginSettings" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-  <form runat="server">
+  
         <section class="content-header">
             <h1>Margin Settings </h1>
             <ol class="breadcrumb">
@@ -27,20 +27,25 @@
                                 <asp:Label ID="lblDepartment" class="control-label col-sm-4" runat="server" Text="Department"><b>Department :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
-                                 <select class="form-control select2">
-                                     <option>--Select--</option>
-                                      <option></option>
-                                 </select>
+                                    <asp:DropDownList ID="DDlDept" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Admin</asp:ListItem>
+                                                <asp:ListItem>Employee</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvDept" runat="server" ErrorMessage="Select Marital Status" ForeColor="Red" ControlToValidate="DDlDept" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <asp:Label ID="lblDesignation" class="control-label col-sm-4" runat="server" Text="Designation"><b>Designation :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
-                                  <select class="form-control select2">
-                                     <option>--Select--</option>
-                                      <option></option>
-                                 </select>
+                                    <asp:DropDownList ID="DDLDesignation" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Manager</asp:ListItem>
+                                                <asp:ListItem>Agent</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvDesgntion" runat="server" ErrorMessage="Select Designation" ForeColor="Red" ControlToValidate="DDLDesignation" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -49,10 +54,13 @@
                                 <asp:Label ID="lblEmployee" class="control-label col-sm-4" runat="server" Text="Employee"><b>Employee :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
-                                   <select class="form-control select2">
-                                     <option>--Select--</option>
-                                      <option></option>
-                                 </select>
+                                    <asp:DropDownList ID="DDLEmp" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Suresh</asp:ListItem>
+                                                <asp:ListItem>Ramesh</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvEmp" runat="server" ErrorMessage="Select Employee" ForeColor="Red" ControlToValidate="DDLEmp" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -60,6 +68,8 @@
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
                                     <asp:TextBox ID="txtIncentive" class="form-control" placeholder="Enter Margin" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvMargin" runat="server" ErrorMessage="Margin is Required" ForeColor="Red" ControlToValidate="txtIncentive" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revMargin" runat="server" ErrorMessage="Enter Valid Margin" ForeColor="Red" ControlToValidate="txtIncentive" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                         </div>
@@ -67,12 +77,12 @@
 
                         <div class="form-group pull-right">
                             <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px;" />
-                            <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;" />
+                            <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;"  CausesValidation="False" />
 
                         </div>
 
 
-                    </form>
+                    
                     <!--2nd row--->
 
 
@@ -150,5 +160,5 @@
 
 
 
-    </form>
+    
 </asp:Content>

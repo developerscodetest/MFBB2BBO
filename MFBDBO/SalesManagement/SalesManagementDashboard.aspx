@@ -218,7 +218,7 @@
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-               <form runat="server">
+               
                    <div class="row">
     <div class="form-group col-md-2">
       <h3 class="box-title"><b>Bookings : </b></h3>
@@ -234,7 +234,7 @@
         </div>
 
                     </div>
-               </form>
+               
               <div class="box-tools pull-right">
                 <div class="btn-group">
                   <ul class="dropdown-menu" role="menu"

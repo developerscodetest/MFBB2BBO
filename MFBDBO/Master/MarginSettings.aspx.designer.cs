@@ -22,6 +22,24 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblDepartment;
         
         /// <summary>
+        /// DDlDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDlDept;
+        
+        /// <summary>
+        /// rfvDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDept;
+        
+        /// <summary>
         /// lblDesignation control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,24 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblDesignation;
         
         /// <summary>
+        /// DDLDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLDesignation;
+        
+        /// <summary>
+        /// rfvDesgntion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDesgntion;
+        
+        /// <summary>
         /// lblEmployee control.
         /// </summary>
         /// <remarks>
@@ -38,6 +74,24 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmployee;
+        
+        /// <summary>
+        /// DDLEmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLEmp;
+        
+        /// <summary>
+        /// rfvEmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmp;
         
         /// <summary>
         /// lblIncentive control.
@@ -56,6 +110,24 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIncentive;
+        
+        /// <summary>
+        /// rfvMargin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMargin;
+        
+        /// <summary>
+        /// revMargin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revMargin;
         
         /// <summary>
         /// btnSave control.

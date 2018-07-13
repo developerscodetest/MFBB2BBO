@@ -19,10 +19,8 @@
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-sign-out"></i> Sign out
-                        </a>
+                    <li>                        
+                        <asp:LinkButton ID="lbtnSignout" runat="server" OnClick="lbtnSignout_Click"><i class="fa fa-sign-out"></i> Signout</asp:LinkButton>
                     </li>
                 </ul>
             </div>

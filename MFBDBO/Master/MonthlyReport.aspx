@@ -7,7 +7,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Monthly Report</h1>
             <ol class="breadcrumb">
@@ -26,21 +26,25 @@
                             <asp:Label ID="lblSMonth" class="control-label col-sm-4" runat="server" Text="SELECT MONTH"><b>SELECT MONTH :</b>
                             </asp:Label>
                             <div class="col-sm-8">
-                                <select class="form-control select2">
-                                    <option>--select--</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                </select>
+                                <asp:DropDownList ID="DDLSMonth" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>January</asp:ListItem>
+                                                <asp:ListItem>February</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvDept" runat="server" ErrorMessage="Select Month" ForeColor="Red" ControlToValidate="DDLSMonth" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
+                               
                             </div>
                         </div>
                         <div class="col-md-5">
                             <asp:Label ID="lblSYear" class="control-label col-sm-4" runat="server" Text="Select Year"><b>SELECT YEAR :</b>
                               <span style="color: red;">*</span></asp:Label>
                             <div class="col-sm-8">
-                                <select class="form-control select2">
-                                    <option>--select--</option>
-                                    <option></option>
-                                </select>
+                                <asp:DropDownList ID="DDLYear" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>2017</asp:ListItem>
+                                                <asp:ListItem>2018</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvYear" runat="server" ErrorMessage="Select Year" ForeColor="Red" ControlToValidate="DDLYear" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -51,7 +55,7 @@
                         </div>
                     </div>
 
-                </form>
+                
             </div>
         </section>
 
@@ -70,5 +74,5 @@
 
 
 
-    </form>
+    
 </asp:Content>

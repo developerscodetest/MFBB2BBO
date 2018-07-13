@@ -1,18 +1,30 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="Designation.aspx.cs" Inherits="MFBDBO.Master.Designation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Designation.aspx.cs" Inherits="MFBDBO.Master.Designation" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+
+        function alertMessage(text) {
+            alert(text);
+        }
+    </script>
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-        <form runat="server">
+    
         <section class="content-header">
             <h1>Designation</h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
                 <li class="#">HRM</li>
-                 <li class="active">Designation</li>
+                <li class="active">Designation</li>
             </ol>
         </section>
 
-  <section class="content">
+        <section class="content">
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-header">
@@ -21,73 +33,73 @@
                 <!-- /.box-body -->
                 <div class="box-body">
                     <!--1st row-->
-                    <form>
+                    <div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <asp:Label ID="lblDepartment" class="control-label col-sm-4" runat="server" Text="Department"><b>Department :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
-                                   <select class="form-control select2">
-                                     <option>--Select--</option>
-                                      <option></option>
-                                 </select>
+                                    <asp:DropDownList ID="ddlDeparment" CssClass="form-control" runat="server" AutoPostBack="false" >
+                                         <asp:ListItem Enabled="true" Text="--Select--" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="rfvDept" runat="server" ErrorMessage="Select Department Name" ForeColor="Red" ControlToValidate="ddlDeparment" InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                              <div class="col-md-6">
+                            <div class="col-md-6">
                                 <asp:Label ID="lblDesignation" class="control-label col-sm-4" runat="server" Text="Designation"><b>Designation :</b>
                               <span style="color: red;">*</span></asp:Label>
                                 <div class="col-sm-8">
                                     <asp:TextBox ID="txtDesignation" class="form-control" placeholder="Enter Designation" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvDesg" runat="server" ErrorMessage="Designation is Required" ForeColor="Red" ControlToValidate="txtDesignation" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revDesg" runat="server" ErrorMessage="Designation Must be Alphabets" ForeColor="Red" ControlToValidate="txtDesignation" ValidationExpression="^[a-zA-Z'.\s]{1,100}$" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                         </div>
-                                <div class="form-group pull-right">
-                                    <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px;" />
-                                    <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;" />
-
-                                </div>
-                           
-                     
-                    </form>
+                        <div class="form-group pull-right">
+                            <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px;" OnClick="btnSave_Click" />
+                            <asp:Button ID="btnUpdate" class="btn btn-primary" runat="server" Text="Update" Style="width: 100px;" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;" CausesValidation="False" OnClick="btnReset_Click" />
+                            <asp:HiddenField ID="hdnDesignationId" runat="server" />
+                             <asp:HiddenField ID="hdnStatus" runat="server" />
+                        </div>
+                    </div>
                     <!--2nd row--->
 
-
-                    <table id="Designation" class="table table-bordered datatable table-striped" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>Department</th>
-                                <th>Designation</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Operations</td>
-                                <td>Booking Manager</td>
-                                <td>Active</td>
-                                <td>
+                    <asp:GridView ID="gdvDesignation" CssClass="table table-bordered dataTable table-striped" runat="server" AutoGenerateColumns="False" ShowHeader="false" OnRowDataBound="gdvDesignation_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="DesignationId" HeaderText="DesignationId" ItemStyle-CssClass="hidden-bound">
+                                <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DepartmentId" HeaderText="Department" />
+                            <asp:BoundField DataField="DesignationName" HeaderText="Designation" />
+                            <asp:BoundField DataField="IsActive" HeaderText="Status" />
+                            <asp:TemplateField HeaderText="Actions">
+                                <ItemTemplate>
                                     <div class="btn-group text-left">
                                         <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                                         <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="#"><i class="fa fa-file-text-o"></i>Edit</a></li>
-                                            <li><a href="#"><i class="fa fa-file-text-o"></i>Mark As Inactive</a></li>
+                                            <li>
+                                                <asp:LinkButton ID="lbtnEdit" runat="server" Text="Edit" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' OnClick="lbtnEdit_Click"><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>
+                                            </li>
+                                            <li>
+                                                <asp:LinkButton ID="lbtnActive" runat="server" Text="Active" CausesValidation="False" OnClick="lbtnActive_Click"><i class="fa fa-file-text-o"></i>Active</asp:LinkButton>
+                                            </li>
+                                            <li>
+                                                <asp:LinkButton ID="lbtnInActive" runat="server" Text="InActive" CausesValidation="False" OnClick="lbtnActive_Click"><i class="fa fa-file-text-o"></i>InActive</asp:LinkButton>
+                                            </li>
                                         </ul>
                                     </div>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
 
                     <!--End Navbar Tabs --->
                 </div>
 
             </div>
         </section>
-   <!-- jQuery 2.2.3 -->
+        <!-- jQuery 2.2.3 -->
         <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!--Data Tables-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
@@ -107,20 +119,50 @@
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
 
+
+
         <script type="text/javascript">
-            //Data Table Function
-
-            $('#Designation').dataTable({
+            $("#AdminPlaceHolder_gdvDesignation").prepend($("<thead><tr><th class='hidden-bound'>DesignationId</th><th>Department</th><th>Designation</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvDesignation").css('width', '100%');
+            $("#AdminPlaceHolder_gdvDesignation").dataTable({
                 "pageLength": 50,
-                dom: 'frtip',
-                responsive: true
-               
-            });
+                dom: 'Bfrtip',
+                buttons: [
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
 
+                ]
+
+            });
         </script>
 
-
-
-
-    </form>
+    
 </asp:Content>

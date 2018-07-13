@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-      <form runat="server">
+      
  <section class="content-header">
       <h1>Salary</h1>
         <ol class="breadcrumb">
@@ -25,24 +25,30 @@
                      <div class="form-row">
                     <div class="form-group col-md-4">
                         <asp:Label ID="lblDepatment" class="control-label required" runat="server" Text="Depatment"><b>Depatment :</b></asp:Label>
-                      <select class="form-control select2">
-                          <option>Select Department<option>
-                          <option></option>
-                      </select>
+                        <asp:DropDownList ID="DDlDept" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Admin</asp:ListItem>
+                                                <asp:ListItem>Employee</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvDept" runat="server" ErrorMessage="Select Depatment" ForeColor="Red" ControlToValidate="DDlDept" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group col-md-4">
                          <asp:Label ID="lblDesignation" class="control-label required" runat="server" Text="Designation"><b>Designation :</b></asp:Label>
-                      <select class="form-control select2">
-                          <option>Select Designation</option>
-                          <option></option>
-                      </select>
+                        <asp:DropDownList ID="DDLDesignation" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Manager</asp:ListItem>
+                                                <asp:ListItem>Agent</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvDesgntion" runat="server" ErrorMessage="Select Designation" ForeColor="Red" ControlToValidate="DDLDesignation" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator> 
                     </div>
                     <div class="form-group col-md-4">
                      <asp:Label ID="lblEmployee" class="control-label required" runat="server" Text="Employee"><b>Employee :</b></asp:Label>
-                      <select class="form-control select2">
-                          <option>Select Employee</option>
-                          <option></option>
-                      </select>
+                     <asp:DropDownList ID="DDLEmp" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Suresh</asp:ListItem>
+                                                <asp:ListItem>Ramesh</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvEmp" runat="server" ErrorMessage="Select Employee" ForeColor="Red" ControlToValidate="DDLEmp" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                     <!--2nd row--->
@@ -50,18 +56,22 @@
                     <div class="form-group col-md-4">
                         <asp:Label ID="lblSPMonth" class="control-label required" runat="server" Text="Salary Per Month"><b>Salary Per Month :</b></asp:Label>
                         <asp:TextBox ID="txtSPMonth" type="number" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvSPMonth" runat="server" ErrorMessage="Salary Per Month is Required" ForeColor="Red" ControlToValidate="txtSPMonth" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="refSPMonth" runat="server" ErrorMessage="Enter Salary Per Month" ForeColor="Red" ControlToValidate="txtSPMonth" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </div>
                     <div class="form-group col-md-4">
                          <asp:Label ID="lblSTemplate" class="control-label required" runat="server" Text="Salary Template"><b>Salary Template :</b></asp:Label>
-                      <select class="form-control select2">
-                          <option>Select Salary Template</option>
-                          <option>Test Template</option>
-                      </select>
+                        <asp:DropDownList ID="DDLStemplate" CssClass="form-control select2" runat="server">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Select Salary Template</asp:ListItem>
+                                                <asp:ListItem>Test Template</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="rfvST" runat="server" ErrorMessage="Select Salary Template" ForeColor="Red" ControlToValidate="DDLStemplate" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>                      
                     </div>
                 </div>
                <div class="col-md-6 modal-footer pull-right">
                     <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px" />
-                    <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px" />
+                    <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px" CausesValidation="False" />
                 </div>
                     <!--Table-->
                     <table id="Users" class="table table-bordered datatable table-striped" style="width: 100%">
@@ -135,5 +145,5 @@
 
         </script>
 
-</form>
+
 </asp:Content>

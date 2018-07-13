@@ -1,9 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="EmployeeView.aspx.cs" Inherits="MFBDBO.Master.EmployeeView" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="EmployeeView.aspx.cs" Inherits="MFBDBO.Master.EmployeeView" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <script type="text/javascript">
+        function alertMessage(text) {
+            alert(text);
+        }
+    </script>
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-<form runat="server">
+
         <section class="content-header">
             <h1>Employee Details</h1>
             <ol class="breadcrumb">
@@ -22,7 +32,7 @@
                 </div>
                 <div class="box-body">
                     <!--Begin Form-->
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <!--1st Row-->
                         <div class="form-group row">
                             <div class="col-md-6">
@@ -73,21 +83,21 @@
                           <div class="col-md-6">
                                 <asp:Label ID="lblGender" class="control-label col-sm-3" runat="server" Text="Gender"><b>Gender :</b></asp:Label>
                                 <div class="col-sm-9">
-                                  <select class="form-control select2">
-                                      <option>--Select</option>
-                                      <option>Male</option>
-                                      <option>Female</option>
-                                  </select>
+                                  <asp:DropDownList ID="DDLGender" CssClass="form-control select2" runat="server">
+                                        <asp:ListItem Enabled="true" Text="--Select--" Value="0"></asp:ListItem>
+                                        <asp:ListItem Enabled="true" Text="Male" Value="1"></asp:ListItem>
+                                        <asp:ListItem Enabled="true" Text="Female" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                              <div class="col-md-6">
                                 <asp:Label ID="lblMS" class="control-label col-sm-3" runat="server" Text="Marital Status"><b>Marital Status :</b></asp:Label>
                                 <div class="col-sm-9">
-                                  <select class="form-control select2">
-                                      <option>--Select</option>
-                                      <option>Married</option>
-                                      <option>Un-Married</option>
-                                  </select>
+                                   <asp:DropDownList ID="DDLMaritalStatus" CssClass="form-control select2" runat="server">
+                                        <asp:ListItem Enabled="true" Text="--Select--" Value="0"></asp:ListItem>
+                                        <asp:ListItem Enabled="true" Text="Married" Value="1"></asp:ListItem>
+                                        <asp:ListItem Enabled="true" Text="Un-Married" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -108,42 +118,40 @@
                         </div>
                          <!--6th  Row-->
                         <div class="form-group row">
-                           <div class="col-md-12">
-                                <asp:Label ID="lblAddress" class="control-label col-sm-1" runat="server" Text="Email" ><b>Address :</b></asp:Label>
-                                <div class="col-sm-11">
-                                  <textarea class="form-control" rows="4" placeholder="Enter Address"></textarea>
-                                </div> 
+                            <asp:Label ID="lblAddress" class="control-label col-sm-1" runat="server" Text="Email"><b>Address :</b></asp:Label>
+                            <div class="col-sm-11">
+                                <asp:TextBox ID="txtAddress" CssClass="form-control" placeholder="Enter Address" Rows="4" runat="server" TextMode="MultiLine"></asp:TextBox>
                             </div>
                         </div>
 
-                    </form>
+                    </div>
                     <!--End Form-->
                 </div>
                 <!--2nd Row-->
 
                  <!-- /.box-body -->
                 <div class="box-header">
-                    <h4>Employeement Information</h4>
+                    <h4>Employment Information</h4>
                 </div>
                 <div class="box-body">
                     <!--Begin Form-->
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <!--2nd  Row-->
                         <div class="form-group row">
                              <div class="col-md-6">
-                                <asp:Label ID="lblDateOfJoin" class="control-label col-sm-4" runat="server" Text="DateOfJoin"><b>Date Of Join :</b></asp:Label>
+                                <asp:Label ID="lblDateOfJoin" class="control-label col-sm-4" runat="server" Text="DateOfJoin"><b>Joining Date :</b></asp:Label>
                                 <div class="col-sm-8">
                                     <asp:TextBox ID="txtDateOfJoin" type="date" class="form-control" runat="server"></asp:TextBox>
+
                                 </div>
                             </div>
                            <div class="col-md-6">
                                 <asp:Label ID="lblRole" class="control-label col-sm-4" runat="server" Text="Role"><b>Role :</b></asp:Label>
                                 <div class="col-sm-8">
-                                  <select class="form-control select2">
-                                      <option>--Select--</option>
-                                      <option>Admin</option>
-                                      <option>Employee</option>
-                                  </select>
+                                 <asp:DropDownList ID="DDLRole" CssClass="form-control select2" runat="server">
+                                        <asp:ListItem Enabled="true" Text="--Select--" Value="0"></asp:ListItem>
+                                        <asp:ListItem Enabled="true" Text="Employee" Value="1"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -152,21 +160,17 @@
                            <div class="col-md-6">
                                 <asp:Label ID="lblDepartment" class="control-label col-sm-4" runat="server" Text="Role"><b>Department :</b></asp:Label>
                                 <div class="col-sm-8">
-                                  <select class="form-control select2">
-                                      <option>--Select--</option>
-                                      <option></option>
-                                      <option></option>
-                                  </select>
+                                  <asp:DropDownList ID="DDLDept" CssClass="form-control select2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLDept_SelectedIndexChanged" >
+                                        <asp:ListItem  Text="--Select--" Value="0"></asp:ListItem>                                    
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                              <div class="col-md-6">
                                 <asp:Label ID="lblDesignation" class="control-label col-sm-4" runat="server" Text="Role"><b>Designation :</b></asp:Label>
                                 <div class="col-sm-8">
-                                  <select class="form-control select2">
-                                      <option>--Select--</option>
-                                      <option></option>
-                                      <option></option>
-                                  </select>
+                                  <asp:DropDownList ID="DDLDesignation" CssClass="form-control select2" runat="server" AutoPostBack="true">
+                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>                                       
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -175,22 +179,24 @@
                           <div class="col-md-6">
                                 <asp:Label ID="lblReportingManager" class="control-label col-sm-4" runat="server" Text=" Reporting Manager"><b>Reporting Manager :</b></asp:Label>
                                 <div class="col-sm-8">
-                                  <select class="form-control select2">
-                                      <option>--Select</option>
-                                      <option>Male</option>
-                                      <option>Female</option>
-                                  </select>
+                                   <asp:DropDownList ID="DDLRManager" CssClass="form-control select2" runat="server">
+                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="Male" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Female" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             
                         </div>
                      
-                    </form>
+                    </div>
                     <!--End Form-->
                     <div class="footer-bottom">
                         <div class="form-group pull-right">
-               <asp:Button ID="btnUpdate" CssClass="btn btn-success" runat="server" Text="Update" style="width:100px;" />
-              <asp:Button ID="btnBack" CssClass="btn btn-danger"  PostBackUrl="EmployeeList.aspx" runat="server" Text="Back" style="width:100px;" />
+                            <asp:Button ID="btnUpdate" CssClass="btn btn-primary" runat="server" Text="Update" Style="width: 100px;" OnClick="BtnUpdate_Click" />                         
+                            <asp:Button ID="btnBack" CssClass="btn btn-danger" PostBackUrl="EmployeeList.aspx" runat="server" CausesValidation="false" Text="Back" style="width: 90px" />                                                                                          
+                            <asp:HiddenField ID="hdnEmpId" runat="server" />
+                                 <asp:HiddenField ID="hdnStatus" runat="server" />
                         </div>
                     </div>
 
@@ -198,5 +204,5 @@
 
             </div>
         </section>
-    </form>
+    
 </asp:Content>

@@ -3,7 +3,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HRMPlaceHolder" runat="server">
- <form runat="server">
+ 
  <section class="content-header">
         <h1>Dashboard
         </h1>
@@ -20,5 +20,5 @@
              </div>
     </section>
 
-</form>
+
 </asp:Content>

@@ -18,7 +18,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-body">
-  <form runat="server">
+  
                    <div class="row">
                    <div class="form-group col-md-4">
                        <label class="control-label">From Date :</label>
@@ -38,7 +38,7 @@
                    </select>
                </div>
                     </div>
-               </form>
+               
 
 
 

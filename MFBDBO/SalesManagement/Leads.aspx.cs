@@ -37,11 +37,22 @@ namespace MFBDBO.Salesmanagement
             Leadstbl ls = new Leadstbl();
             ls.Status = id;
             List<Leadstbl> lst = new List<Leadstbl>();
-            lst = objLeadsBL.GetLeadsByStatus(ls).ToList();            
-                     
-            grid.DataSource = lst;
-            grid.DataBind();
-            btnUpdate.Visible = false;
+            lst = objLeadsBL.GetLeadsByStatus(ls).ToList();
+            if (lst.Count() >= 1)
+            {
+                grid.DataSource = lst;
+                grid.DataBind();
+                btnUpdate.Visible = false;
+            }
+            else
+            {
+                DataTable dt = new DataTable();
+                grid.DataSource = dt;
+                grid.DataBind();
+            }
+
+       
+           
         }
 
 

@@ -6,10 +6,15 @@
             display: none;
         }
     </style>
+    <script type="text/javascript">
+        function alertMessage(text) {
+            alert(text);
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Country</h1>
             <ol class="breadcrumb">
@@ -28,7 +33,7 @@
                 <!-- /.box-body -->
                 <div class="box-body">
                     <!--1st row-->
-                    <form>
+                    <div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <asp:Label ID="lblCountry" class="control-label col-sm-3" runat="server" Text="Country"><b>Country :</b>
@@ -48,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                     <!--2nd row--->
 
 
@@ -58,14 +63,14 @@
                                 <Columns>
                                     <asp:BoundField DataField="CountryID" HeaderText="CountryID" ItemStyle-CssClass="hidden-bound" />
                                     <asp:BoundField DataField="CountryName" HeaderText="CountryName" />
-                                    <asp:BoundField DataField="IsActive" HeaderText="IsActive" />
+                                    <asp:BoundField DataField="IsActive" HeaderText="Status" />
                                     <asp:TemplateField HeaderText="Actions">
                                         <ItemTemplate>
                                             <div class="btn-group text-left">
                                                 <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
                                                 <ul class="dropdown-menu pull-right" role="menu">
                                                     <li>
-                                                        <asp:LinkButton ID="lbtnCEdit" runat="server" Text="Edit" CausesValidation="False" OnClick="lbtnCEdit_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>
+                                                        <asp:LinkButton ID="lbtnCEdit" runat="server" Text="Edit" CausesValidation="False" OnClick="lbtnCEdit_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-pencil"></i>Edit</asp:LinkButton>
                                                         <%-- <asp:LinkButton ID="lbtnLEdit" runat="server" Text="Edit" CausesValidation="False" OnClick="lbtnLEdit_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>--%>
                                                     </li>
                                                     <li>
@@ -113,24 +118,14 @@
         <script type="text/javascript">
             //Data Table Function
 
-            $("#AdminPlaceHolder_gdvCountry").prepend($("<thead><tr><th class='hidden-bound'>CountryID</th><th>CountryName</th><th>IsActive</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvCountry").prepend($("<thead><tr><th class='hidden-bound'>CountryID</th><th>Country Name</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
             $("#AdminPlaceHolder_gdvCountry").css('width', '100%');
             $("#AdminPlaceHolder_gdvCountry").dataTable({
-                "pageLength": 50,
+                "pageLength": 10,
                 dom: 'Bfrtip',
                 buttons: [
-                    {
-                        extend: 'copy',
-                        exportOptions: {
-                            columns: [0, 1]
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            columns: [0, 1]
-                        }
-                    },
+                  
+                  
                     {
                         extend: 'excel',
                         exportOptions: {
@@ -143,17 +138,12 @@
                             columns: [0, 1]
                         }
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1]
-                        }
-                    }
+                    
                 ]
 
             });
 
         </script>
 
-    </form>
+    
 </asp:Content>

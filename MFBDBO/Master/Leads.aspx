@@ -91,7 +91,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Leads</h1>
             <ol class="breadcrumb">
@@ -129,7 +129,7 @@
                             </div>
 
                         </div>
-                    </form>
+                    
 
                     <!--2nd row-->
 
@@ -649,5 +649,5 @@
 
         </script>
 
-    </form>
+    
 </asp:Content>

@@ -1,10 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="RegistrationView.aspx.cs" Inherits="MFBDBO.Master.RegistrationView" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+        function alertMessage(text) {
+            alert(text);
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Registration Details</h1>
             <ol class="breadcrumb">
@@ -14,219 +19,319 @@
         </section>
         <section class="content">
             <div class="box">
-                <div class="box-header"></div>
                 <!-- /.box-header -->
+                <div class="box-header">
+                    <h3 class="box-title">Personal Details :</h3>
+                </div>
                 <div class="box-body">
-                    <form>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAName" class="control-label col-sm-4" runat="server" Text="Label"><b>Agency Name  :</b>
+                    <!--1st row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblAName" class="control-label col-sm-4" runat="server" Text="Agency Name"><b>Agency Name  :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblAgencyName" class="control-label col-sm-12" runat="server" >
                                 </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblKT" class="control-label col-sm-12" runat="server" Text="Label">Karthik Travels
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAE" class="control-label col-sm-4" runat="server" Text="Label"><b>AgencyEmail :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblAEmail" class="control-label col-sm-4" runat="server" Text="Label">K101@gmail.com
-                                    </asp:Label>
-                                </div>
                             </div>
                         </div>
-                        <!--2nd row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblPhone" class="control-label col-sm-4" runat="server" Text="Label"><b>Phone :</b>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblAE" class="control-label col-sm-4" runat="server" Text="Agency Email :"><b>Agency Email :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblAEmail" class="control-label col-sm-4" runat="server" >
                                 </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblPN" class="control-label col-sm-4" runat="server" Text="Label">9876543210
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblCategory" class="control-label col-sm-4" runat="server" Text="Label"><b>Category :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblCN" class="control-label col-sm-4" runat="server" Text="Label">B2B
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--3rd row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblIATA" class="control-label col-sm-4" runat="server" Text="Label"><b>IATA Status :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblYES" class="control-label col-sm-4" runat="server" Text="Label">Yes
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblRegNo" class="control-label col-sm-4" runat="server" Text="Label"><b>IATA Reg NO :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblRN" class="control-label col-sm-4" runat="server" Text="Label">1234367
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--4th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblWebsite" class="control-label col-sm-4" runat="server" Text="Label"><b>Website :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblWeb" class="control-label col-sm-4" runat="server" Text="Label">www.kt.com
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblCheckOut" class="control-label col-sm-4" runat="server" Text="Label"><b>First Name:</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblCheckOutDate" class="control-label col-sm-4" runat="server" Text="Label">asfsfdg
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--5th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblSupplier" class="control-label col-sm-4" runat="server" Text="Label"><b>Last Name :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblSName" class="control-label col-sm-4" runat="server" Text="Label">dgfdh
-                                    </asp:Label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <asp:Label ID="lblCancellation" class="control-label col-sm-4" runat="server" Text="Label"><b>Address :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblNR" class="control-label col-sm-6" runat="server" Text="Label">asfsg
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!--7th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblAdults" class="control-label col-sm-4" runat="server" Text="Label"><b>Country :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblANo" class="control-label col-sm-6" runat="server" Text="Label">India
-                                    </asp:Label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <asp:Label ID="lblDeadline" class="control-label col-sm-4" runat="server" Text="Label"><b>City :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblDeadlineDate" class="control-label col-sm-4" runat="server" Text="Label">Hyderabad
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <!--8th row-->
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <asp:Label ID="lblkids" class="control-label col-sm-4" runat="server" Text="Label"><b>Pincode :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="lblKidsNo" class="control-label col-sm-4" runat="server" Text="Label">500039
-                                    </asp:Label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <asp:Label ID="Label1" class="control-label col-sm-4" runat="server" Text="Label"><b>Prefered Currency :</b>
-                                </asp:Label>
-                                <div class="col-sm-8">
-                                    <asp:Label ID="Label2" class="control-label col-sm-6" runat="server" Text="Label">Rupees
-                                    </asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!--End Form-->
-                    <hr />
-                    <!--Form Row--->
-                  
-                        <div class="box-header">
-                            <h3 class="box-title"><b>Documents :</b></h3>
-                        </div>
-                      <div class="box-body">
-                         <div class="form-group row">
-                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-            <asp:Label ID="lblSNo" class="control-label col-md-1" runat="server" Text="Document Name"><span style="font-size:18px;">1. </span> 
-                                </asp:Label>
-                             <asp:Label ID="lblName" class="control-label col-md-4" runat="server" Text="Document Name"><span style="font-size:18px;">Pancard  </span> 
-                                </asp:Label>
-                                <div class="col-md-6">
-                   <asp:Button ID="btnDownload" CssClass="btn btn-primary" runat="server" Text="Download" Style="width: 100px;" />
-                                </div>
-                            </div>
-                        </div>
-                          <div class="form-group row">
-                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                                  <asp:Label ID="Label4" class="control-label col-md-1" runat="server" Text="Document Name"><span style="font-size:18px;">2. </span> 
-                                </asp:Label>
-                             <asp:Label ID="Label3" class="control-label col-md-4" runat="server" Text="Document Name"><span style="font-size:18px;">Adhaar Card  </span> 
-                                </asp:Label>
-                                <div class="col-md-6">
-                   <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Download" Style="width: 100px;" />
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--Documents End Form--->
-                       <div class="box-header">
+                    <!--2nd row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblFirstName" class="control-label col-sm-4" runat="server" Text="First Name :"><b>First Name:</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblFN" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblLastName" class="control-label col-sm-4" runat="server" Text="Last Name :"><b>Last Name :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblLN" class="control-label col-sm-4" runat="server">
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--3rd row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblTelephoneNo" class="control-label col-sm-4" runat="server" Text="Telephone No"><b>Telephone No :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblTN" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblCategory" class="control-label col-sm-4" runat="server" Text="Category :"><b>Category :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblCategory1" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--4th row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblWebsite" class="control-label col-sm-4" runat="server" Text="Website :"><b>Website :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblWeb" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblAddress" class="control-label col-sm-4" runat="server" Text="Address :"><b>Address :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblAddress1" class="control-label col-sm-6" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--5th row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblCountry" class="control-label col-sm-4" runat="server" Text="Country"><b>Country :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblCntry" class="control-label col-sm-6" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblState" class="control-label col-sm-4" runat="server" Text="State"><b>State :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblSt" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--6th row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblCity" class="control-label col-sm-4" runat="server" Text="City :"><b>City :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblCt" class="control-label col-sm-4" runat="server" ></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblPincode" class="control-label col-sm-4" runat="server" Text="Pincode :"><b>Pincode :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblPCode" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--7th row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblPCurrency" class="control-label col-sm-4" runat="server" Text="Preferred Currency :"><b>Preferred Currency :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblPCurrency1" class="control-label col-sm-6" runat="server">
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblIATA" class="control-label col-sm-4" runat="server" Text="IATA Status :"><b>IATA Status :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblIATAS" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--8th Row--->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblReferredBy" class="control-label col-sm-4" runat="server" Text="Referred By :"><b>Referred By :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblRBy" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Label ID="lblRegNo" class="control-label col-sm-4" runat="server" Text="IATA Reg NO :"><b>IATA Reg NO :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:Label ID="lblRN" class="control-label col-sm-4" runat="server" >
+                                </asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--9th row-->
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <asp:Label ID="lblEmployee" class="control-label col-sm-4" runat="server" Text="Employee :"><b>Employee :</b>
+                            </asp:Label>
+                            <div class="col-sm-8">
+                                <asp:DropDownList ID="ddlEmployee" class="form-control" data-show-subtext="true" data-live-search="true" runat="server">
+                                    <asp:ListItem>-Select-</asp:ListItem>
+                                   
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Form-->
+                    <!--Upload Files--->
+                 <%--   <div class="box-header">
+                        <h3 class="box-title">Upload Files :</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group row">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <asp:Label ID="lblDN" class="control-label col-md-4" runat="server" Text="Document Name"><b>Document Name : </b>
+                                </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtDN" CssClass="form-control" placeholder="Enter Document Name" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <asp:Label ID="lblCF" class="control-label col-md-4" runat="server" Text="Choose File"><b>Choose File :</b>
+                                </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtCF" CssClass="form-control" type="file" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>  
+                     <div class="box-header">
                             <h3 class="box-title"><b>Upload Files :</b></h3>
                         </div>
                       <div class="box-body">
                          <div class="form-group row">
-                            <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
-                             <asp:Label ID="lblDN" class="control-label col-md-4" runat="server" Text="Document Name"><b>Document Name : </b>
-                                </asp:Label>
-                                <div class="col-md-8">
-                     <asp:TextBox ID="txtDN" CssClass="form-control" placeholder="Enter Document Name" runat="server"></asp:TextBox>
+                              <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                                    <asp:Label ID="Label1" class="control-label" runat="server" Text="Document Name"><b>Document Name : </b>  <span class="requiredLabel">*</span>
+                                    </asp:Label>
+                                    <asp:TextBox ID="txtDocumentName0" CssClass="form-control" placeholder="Enter Document Name" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvDN" runat="server" ErrorMessage="Please Enter Document Name" ForeColor="Red" ControlToValidate="txtDocumentName0"></asp:RequiredFieldValidator>
                                 </div>
-                            </div>
+
                              <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
-                             <asp:Label ID="lblCF" class="control-label col-md-4" runat="server" Text="Choose File"><b>Choose File :</b>
-                                </asp:Label>
-                                <div class="col-md-8">
-                     <asp:TextBox ID="txtCF" CssClass="form-control" type="file" runat="server"></asp:TextBox>
+                                    <asp:Label ID="ChooseFile1" class="control-label" runat="server" Text="Choose File"><b>Choose File :</b>  <span class="requiredLabel">*</span>
+                                    </asp:Label>
+                                    <asp:FileUpload ID="UploadDoc0" CssClass="form-control" runat="server" />
+                                    <asp:RequiredFieldValidator ID="rfvUD" runat="server" ErrorMessage="Please Choose File " ForeColor="Red" ControlToValidate="UploadDoc0"></asp:RequiredFieldValidator>
+                                </div>
+                            <%--<div class="col-md-2" style="margin-top: 25px;">
+                                    <asp:Button ID="btnAdd" Style="font-size: 17px;" CssClass="fa fa=plus-circle fa-lg" runat="server" Text="Add" CausesValidation="false"  />
+                                </div>--%>
+                            </div>
+                            <asp:PlaceHolder runat="server" ID="ctrPlaceholder2"></asp:PlaceHolder>
+                           <!--2nd row--->
+                           <div class="form-group row">
+                              <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                                    <asp:Label ID="Label2" class="control-label" runat="server" Text="Document Name"><b>Document Name : </b>  <span class="requiredLabel">*</span>
+                                    </asp:Label>
+                                    <asp:TextBox ID="txtDocumentName1" CssClass="form-control" placeholder="Enter Document Name" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter Document Name" ForeColor="Red" ControlToValidate="txtDocumentName0"></asp:RequiredFieldValidator>
+                                </div>
+
+                             <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                                    <asp:Label ID="Label5" class="control-label" runat="server" Text="Choose File"><b>Choose File :</b>  <span class="requiredLabel">*</span>
+                                    </asp:Label>
+                                    <asp:FileUpload ID="UploadDoc1" CssClass="form-control" runat="server" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Choose File " ForeColor="Red" ControlToValidate="UploadDoc0"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                             <div class="col-md-2">
-     <a href="#" style="font-size:17px;"><i class="fa fa-plus-circle fa-lg"></i></a>
-                             </div>
+                            <asp:PlaceHolder runat="server" ID="PlaceHolder1"></asp:PlaceHolder>
                         </div>
-                        
-                    </div>
-                    <!-- Upload File End Form--->
 
-                    <div class="footer-bottom pull-right">
-                        <asp:Button ID="btnApprove" CssClass="btn btn-primary" runat="server" Text="Approve" Style="width: 100px;" />
-                        <asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" Style="width: 100px;" />
-                        <asp:Button ID="btnBack" CssClass="btn btn-danger" PostBackUrl="Registrations.aspx" runat="server" Text="Back" Style="width: 100px;" />
-                    </div>
 
+                     <!--Upload Files--->
+                    <div class="box-header">
+                        <h3 class="box-title">Contact Details :</h3>
+                    </div>
+                    <div class="box-body" style="border:1px solid #ddd;">
+                        <!--Accounts-->
+                        <div>
+                        <div class="form-group row">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <asp:Label ID="lblAccounts" class="control-label col-md-3" runat="server" Text="Accounts :"><b>Accounts : </b>
+                                </asp:Label>
+                                <div class="col-md-2">
+                              <asp:Label ID="lblAcName" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-4">
+                              <asp:Label ID="lblAcEmail" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-3">
+                              <asp:Label ID="lblAcPhoneNumber" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                  <!--Operations-->
+                   <div class="form-group row">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <asp:Label ID="lblOperations" class="control-label col-md-3" runat="server" Text="Operations :"><b>Operations : </b>
+                                </asp:Label>
+                                <div class="col-md-2">
+                              <asp:Label ID="lblopName1" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-4">
+                              <asp:Label ID="lblopEmail1" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-3">
+                              <asp:Label ID="lblopPhoneNumber1" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                       <!--Management-->
+                         <div class="form-group row">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <asp:Label ID="lblManagement" class="control-label col-md-3" runat="server" Text="Management :"><b>Management : </b>
+                                </asp:Label>
+                                <div class="col-md-2">
+                              <asp:Label ID="lblmnName2" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-4">
+                              <asp:Label ID="lblmnEmail2" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                                  <div class="col-md-3">
+                              <asp:Label ID="lblmnPhoneNumber2" class="control-label" runat="server" >
+                                </asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <!-- Buttons--->
+                    <div class="form-group">
+                        <div class="footer-bottom pull-right">
+                            <asp:Button ID="btnApprove" CssClass="btn btn-primary" runat="server" Text="Approve" Style="width: 100px;" OnClick="btnApprove_Click1" />
+                            <asp:Button ID="btnReject" CssClass="btn btn-danger" runat="server" Text="Reject" Style="width: 100px;" OnClick="btnReject_Click1" />
+                            <asp:Button ID="btnBack" CssClass="btn btn-danger" PostBackUrl="Registrations.aspx" runat="server" Text="Back" Style="width: 100px;" OnClick="btnBack_Click" />
+                            <asp:HiddenField ID="hdnAgentID" runat="server" />
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </section>
-    </form>
+    
 </asp:Content>

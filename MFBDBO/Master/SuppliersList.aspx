@@ -1,9 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="SuppliersList.aspx.cs" Inherits="MFBDBO.Master.SuppliersList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
       <section class="content-header">
             <h1>Suppliers List</h1>
             <ol class="breadcrumb">
@@ -20,38 +25,42 @@
                     <div class="form-group pull-right">
                <asp:Button ID="btnAE" CssClass="btn btn-primary" PostBackUrl="Suppliers.aspx" runat="server" Text="Add Supplier"  />
                     </div>
-                    <table id="Employee" class="table table-bordered datatable table-striped" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>Supplier</th>
-                                <th>Name</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>123456</td>
-                                <td>Ramesh</td>
-                                <td>9876543210</td>
-                                <td>ramesh123@gmail.com</td>
-                                <td><span class="dtr-data"><span class="label label-success">Active</span></span></td>
-                                <td>
-                                    <div class="btn-group text-left">
-                                        <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
-                                        <ul class="dropdown-menu pull-right" role="menu">
-                                             <li><a href="SupplierEdit.aspx"><i class="fa fa-file-text-o"></i>Edit</a></li>
-                                            <li><a href="SupplierView.aspx"><i class="fa fa-file-text-o"></i>View</a></li>
-                                            <li><a href="#"><i class="fa fa-file-text-o"></i>Mark as Inactive</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
+                    <asp:GridView ID="gdvSuppliers" CssClass="table table-striped table-bordered" EmptyDataText="No Records Found" ShowHeaderWhenEmpty="true" runat="server" AutoGenerateColumns="False"  ShowHeader="False" OnRowDataBound="GdvSuppliers_RowDataBound">
+                            <Columns>
+                                <asp:BoundField DataField="SupplierID" HeaderText="Suppliers ID" ItemStyle-CssClass="hidden-bound">
+                                <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                                    </asp:BoundField>
+                                <asp:BoundField DataField="Supplier" HeaderText="Supplier Name" />                               
+                                <asp:BoundField DataField="PersonName" HeaderText="PersonName" />
+                                <asp:BoundField DataField="MobileNo" HeaderText="MobileNo" />
+                                <asp:BoundField DataField="Email" HeaderText="Email" />
+                                <asp:BoundField DataField="IsActive" HeaderText="Status" />                                
+                                <asp:TemplateField HeaderText="Actions">                                                           
+                                   
+                                    <ItemTemplate>
+                                        <div class="btn-group text-left">
+                                            <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnSEdit" runat="server" Text="Edit" CausesValidation="False" OnClick="lbtnSEdit_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>                                                        
+                                                    <%--<asp:Button ID="btnBack" class="btn btn-danger" PostBackUrl="SuppliersList.aspx" runat="server" Text="Back" style="width: 90px" />--%>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnSView" runat="server" Text="View" CausesValidation="False" OnClick="lbtnSView_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'  ><i class="fa fa-file-text-o"></i>View</asp:LinkButton>
+                                                </li>                                                    
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnSMarkAsInActive" runat="server" Text="Mark As InActive" CausesValidation="False" OnClick="lbtnSMarkAsActive_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Mark As InActive</asp:LinkButton>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnSMarkAsActive" runat="server" Text="Mark As Active" CausesValidation="False" OnClick="lbtnSMarkAsActive_Click" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'><i class="fa fa-file-text-o"></i>Mark As Active</asp:LinkButton>
+                                                </li>
+                                            </ul>
 
-                        </tbody>
-                    </table>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
 
 
                     <!--End Navbar Tabs --->
@@ -82,13 +91,50 @@
         <script type="text/javascript">
             //Data Table Function
 
-            $('#Employee').dataTable({
-                "pageLength": 50,
-                dom: 'frtip',
-                responsive: true
+            $("#AdminPlaceHolder_gdvSuppliers").prepend($("<thead><tr><th class='hidden-bound'>SupplierID</th><th>Supplier</th><th>Person Name</th><th>Mobile No</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvSuppliers").css('width', '100%');
+            $("#AdminPlaceHolder_gdvSuppliers").dataTable({
+                "pageLength": 10,
+                dom: 'Bfrtip',
+
+                //buttons: [
+                //    'copy', 'csv', 'excel', 'pdf', 'print'
+                //]
+                buttons: [
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //},
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5]
+                        }
+                    },
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3, 4]
+                    //    }
+                    //}
+                ]
                
             });
 
         </script>
-    </form>
+    
 </asp:Content>

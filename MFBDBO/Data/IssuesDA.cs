@@ -201,7 +201,6 @@ namespace MFBDBO.Data
             return objIssues;
         }
     }
-
     public class Issuestbl
     {
         public int IssuesID { get; set; }

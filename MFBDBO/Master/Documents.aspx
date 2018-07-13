@@ -1,10 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="Documents.aspx.cs" Inherits="MFBDBO.Master.Documents" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="Documents.aspx.cs" Inherits="MFBDBO.Master.Documents" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+
+        function alertMessage(text) {
+            alert(text);
+        }
+    </script>
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>Documents</h1>
             <ol class="breadcrumb">
@@ -16,16 +27,16 @@
         <section class="content">
             <div class="box box-body">
                 <!--Begin 1st row-->
-                <form>
+                <div>
                     <div class="form-group row">
                         <div class="col-md-6">
                             <asp:Label ID="lblCountry" class="control-label col-md-4" runat="server" Text="Country"><b>Country :</b>
                             </asp:Label>
                             <div class="col-md-8">
-                                <select class="form-control select2">
-                                    <option>--select--</option>
-                                    <option></option>
-                                </select>
+                                <asp:DropDownList ID="DDlCountry" CssClass="form-control" runat="server" AutoPostBack="True">
+                                        <asp:ListItem>--Select--</asp:ListItem>
+                                    </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvCountry" runat="server" ErrorMessage="Select Country" ForeColor="Red" ControlToValidate="DDLCountry" InitialValue="--Select--" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -33,45 +44,47 @@
                             </asp:Label>
                             <div class="col-md-8">
                                 <asp:TextBox ID="txtDName" CssClass="form-control" placeholder="Enter Document Name" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvDName" runat="server" ErrorMessage="Document Name is required" ForeColor="Red" ControlToValidate="txtDName" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="revDName" runat="server" ErrorMessage="Document Name Must be Alphabets" ForeColor="Red" ControlToValidate="txtDName" ValidationExpression="^[a-zA-Z'.\s]{1,100}$" Display="Dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
                     <div class="form-group pull-right">
-                        <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px;" />
-                        <asp:Button ID="Button1" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;" />
-
+                        <asp:Button ID="btnSave" class="btn btn-success" runat="server" Text="Save" Style="width: 100px;" OnClick="btnSave_Click1" />
+                        <asp:Button ID="btnUpdate" class="btn btn-primary" runat="server" Text="Update" Style="width: 100px;" OnClick="btnUpdate_Click" />
+                        <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px;"  CausesValidation="False" OnClick="btnReset_Click2" />
+                        <asp:HiddenField ID="hdnCDocumentId" runat="server" />
                     </div>
+                </div>
+                <asp:GridView ID="gdvCDocument" CssClass="table table-bordered table-striped" runat="server" AutoGenerateColumns="False" ShowHeader="false" OnRowDataBound="gdvCDocument_RowDataBound">
+                            <Columns>
+                               <asp:BoundField DataField="CDocumentId" HeaderText="CDocument ID" ItemStyle-CssClass="hidden-bound">
+                                <ItemStyle CssClass="hidden-bound"></ItemStyle>
+                            </asp:BoundField>
 
-                </form>
-                <!--End 1st row--->
-                <!--Table-->
-                <table id="Document" class="table table-bordered datatable table-striped" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>Country</th>
-                            <th>Document Name</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>India</td>
-                            <td>GST</td>
-                            <td>Active</td>
-                            <td>
-                                <div class="btn-group text-left">
-                                    <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#"><i class="fa fa-file-text-o"></i>Edit</a></li>
-                                        <li><a href="#"><i class="fa fa-file-text-o"></i>Mark As Inactive</a></li>
-                                    </ul>
-                                </div>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <asp:BoundField DataField="CountryID" HeaderText="Country Name" />
+                                <asp:BoundField DataField="DocumentName" HeaderText="Document Name" />
+                                <asp:BoundField DataField="IsActive" HeaderText="Status" />
+                                <asp:TemplateField HeaderText="Actions">
+                                    <ItemTemplate>
+                                        <div class="btn-group text-left">
+                                            <button type="button" class="btn btn-primary btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnEdit" runat="server" Text="Edit" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' OnClick="lbtnEdit_Click" ><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtnActive" runat="server" Text="Active" CausesValidation="False" OnClick="lbtnActive_Click" ><i class="fa fa-file-text-o"></i>Active</asp:LinkButton>
+                                                </li>
+                                                 <li>
+                                                    <asp:LinkButton ID="lbtnInActive" runat="server" Text="InActive" CausesValidation="False" OnClick="lbtnActive_Click" ><i class="fa fa-file-text-o"></i>InActive</asp:LinkButton>
+                                                </li>                                                  
+                                            </ul>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
             </div>
         </section>
         <!-- jQuery 2.2.3 -->
@@ -95,15 +108,46 @@
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
 
         <script type="text/javascript">
-            //Data Table Function
+            $("#AdminPlaceHolder_gdvCDocument").prepend($("<thead><tr><th class='hidden-bound'>CDocumentId</th><th>Country Name</th><th>Document Name</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
+            $("#AdminPlaceHolder_gdvCDocument").css('width', '100%');
+            $("#AdminPlaceHolder_gdvCDocument").dataTable({
+                "pageLength": 10,
+                dom: 'Bfrtip',
+                buttons: [
+                    //{
+                    //    extend: 'copy',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
+                    //{
+                    //    extend: 'csv',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    //{
+                    //    extend: 'print',
+                    //    exportOptions: {
+                    //        columns: [0, 1, 2, 3]
+                    //    }
+                    //},
 
-            $('#Document').dataTable({
-                "pageLength": 50,
-                dom: 'frtip',
-                responsive: true
+                ]
 
-            });
-
+            });           
         </script>
-    </form>
+    
 </asp:Content>

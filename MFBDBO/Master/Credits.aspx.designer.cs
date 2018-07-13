@@ -22,6 +22,24 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
+        /// DDLAgencyTravels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLAgencyTravels;
+        
+        /// <summary>
+        /// rfvATravels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvATravels;
+        
+        /// <summary>
         /// lblAC control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,24 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.TextBox txtAC;
         
         /// <summary>
+        /// rfvACredit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvACredit;
+        
+        /// <summary>
+        /// refACredit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator refACredit;
+        
+        /// <summary>
         /// lblDueDate control.
         /// </summary>
         /// <remarks>
@@ -56,6 +92,15 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDueDate;
+        
+        /// <summary>
+        /// rfvDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDate;
         
         /// <summary>
         /// lblName3 control.

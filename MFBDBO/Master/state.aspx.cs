@@ -45,15 +45,21 @@ namespace MFBDBO.Master
             st.CountryID = Convert.ToInt32(DDlCountry.SelectedValue);
             st.IsActive = 1;
             st.CreatedBy = 1;
-            st.CreatedDate = DateTime.Now.ToString();
+            st.CreatedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             st.UpdatedBy = 1;
             st.UpdatedDate = DateTime.Now.ToString();
 
             List<Statetbl> lst = new List<Statetbl>();
             lst = objStateBL.SaveState(st).ToList();
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('State Saved Successfully');", true);
+            if (lst[0].Message == "Success")
+            {
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('State Saved Successfully');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('State Saved Successfully');", true);
+                //Response.Redirect("state.aspx");
+            }
             Clear();
             GetState();
+            
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
@@ -72,7 +78,8 @@ namespace MFBDBO.Master
             List<Countrytbl> lstCountry = new List<Countrytbl>();
             Countrytbl ctry = new Countrytbl();
             CountryBL objcountryBL = new CountryBL();
-            lstCountry = objcountryBL.GetAllCountry(ctry).ToList();
+            ctry.IsActive = 1;
+            lstCountry = objcountryBL.GetCountryByIsActive(ctry).ToList();
             foreach (var cnt in lstCountry)
             {
                 ListItem li = new ListItem();
@@ -95,7 +102,7 @@ namespace MFBDBO.Master
             st.CountryID = Convert.ToInt32(DDlCountry.SelectedValue);
             st.IsActive = 1;
             st.UpdatedBy = 1;
-            st.UpdatedDate = DateTime.Now.ToString();
+            st.UpdatedDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             List<Statetbl> lst = new List<Statetbl>();
             lst = objStateBL.UpdateState(st).ToList();
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alertMessage('State Updated Successfully');", true);
@@ -105,7 +112,6 @@ namespace MFBDBO.Master
             btnSave.Visible = true;
             GetState();
         }
-
         protected void Reset()
         {
             DDlCountry.SelectedIndex = 0;
@@ -117,7 +123,6 @@ namespace MFBDBO.Master
         {
             Reset();
         }
-
         protected void lbtnEdit_Click(object sender, EventArgs e)
         {
             LinkButton lbtn = (LinkButton)sender;
@@ -135,13 +140,11 @@ namespace MFBDBO.Master
                 hdnStateID.Value = el.StateID.ToString();
                 DDlCountry.SelectedValue = el.CountryID.ToString();
                 txtState.Text = el.StateName;
-
             }
             btnSave.Visible = false;
             btnUpdate.Visible = true;
             //GetState();
         }
-
         protected void lbtnActive_Click(object sender, EventArgs e)
         {
             LinkButton lbtn = (LinkButton)sender;
@@ -161,8 +164,6 @@ namespace MFBDBO.Master
             objStateBL.UpdateStateIsActive(st);
             GetState();
         }
-                
-
         protected void gdvState_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -177,10 +178,9 @@ namespace MFBDBO.Master
                     e.Row.Cells[3].Text = "InActive";
                     e.Row.FindControl("lbtnInActive").Visible = false;
                 }
-
                 var lst = lstCountry;
                 var res = lst.OfType<Countrytbl>().Where(s => s.CountryID == Convert.ToInt32(e.Row.Cells[1].Text));
-                e.Row.Cells[1].Text = res.First().CountryName;
+                e.Row.Cells[1].Text = res.Count() <= 0 ? "" : res.First().CountryName;
 
             }
         }

@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="state.aspx.cs" Inherits="MFBDBO.Master.state" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .hidden-bound {
+            display: none;
+        }
+    </style>
     <script type="text/javascript">
         function alertMessage(text) {
             alert(text);
@@ -8,7 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>State</h1>
             <ol class="breadcrumb">
@@ -27,7 +32,7 @@
                 <!-- /.box-body -->
                 <div class="box-body">
                     <!--1st row-->
-                    <form>
+                    <div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <asp:Label ID="lblDepartment" class="control-label col-sm-4" runat="server" Text="Department"><b>Country :</b>
@@ -61,7 +66,7 @@
                             </div>
                         </div>
 
-                    </form>
+                    </div>
                     <!--2nd row--->
                     <asp:GridView ID="gdvState" CssClass="table table-bordered table-striped" runat="server" AutoGenerateColumns="False" ShowHeader="false" OnRowDataBound="gdvState_RowDataBound">
                             <Columns>
@@ -119,7 +124,7 @@
             $("#AdminPlaceHolder_gdvState").prepend($("<thead><tr><th class='hidden-bound'>StateID</th><th>Country</th><th>State Name</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
             $("#AdminPlaceHolder_gdvState").css('width', '100%');
             $("#AdminPlaceHolder_gdvState").dataTable({
-                "pageLength": 50,
+                "pageLength": 10,
                 dom: 'Bfrtip',
                 buttons: [
                     //{
@@ -157,6 +162,6 @@
 
             });           
         </script>
-    </form>
+    
 
 </asp:Content>

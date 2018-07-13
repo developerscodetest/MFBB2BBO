@@ -31,6 +31,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.TextBox txtFDate;
         
         /// <summary>
+        /// rfvFDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFDate;
+        
+        /// <summary>
         /// lblToDate control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.TextBox txtTDate;
         
         /// <summary>
+        /// rfvTDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTDate;
+        
+        /// <summary>
         /// lblMTemplate control.
         /// </summary>
         /// <remarks>
@@ -58,13 +76,31 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblMTemplate;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtMTemp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtMTemp;
+        
+        /// <summary>
+        /// rfvMTemp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMTemp;
+        
+        /// <summary>
+        /// revMTemp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revMTemp;
         
         /// <summary>
         /// lblLName control.

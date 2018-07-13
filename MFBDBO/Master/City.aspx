@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="City.aspx.cs" EnableEventValidation="false" Inherits="MFBDBO.Master.City" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <style>
+        .hidden-bound {
+            display:none;
+        }
+    </style>
     <script type="text/javascript">
         function alertMessage(text) {
             alert(text);
@@ -8,7 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>City</h1>
             <ol class="breadcrumb">
@@ -27,7 +32,7 @@
                 <!-- /.box-body -->
                 <div class="box-body">
                     <!--1st row-->
-                    <form>
+                    <div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <asp:Label ID="Label1" class="control-label col-sm-3" runat="server" Text="Country"><b>Country :</b>
@@ -64,19 +69,19 @@
                                     <asp:TextBox ID="txtCity" class="form-control" placeholder="Enter City" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvCity" runat="server" ErrorMessage="City Name is Required" ForeColor="Red" ControlToValidate="txtCity" Display="Dynamic"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="revCity" runat="server" ErrorMessage="City Name Must be Alphabets" ForeColor="Red" ControlToValidate="txtCity" ValidationExpression="^[a-zA-Z'.\s]{1,100}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                                </div>
+                                </div> 
                             </div>
                         </div>
 
                         <div class="form-group pull-right">
                             <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px;" OnClick="btnSave_Click1" />
-                            <asp:Button ID="btnReset" class="btn btn-danger" runat="server" CausesValidation="false" Text="Reset" Style="width: 100px;" OnClick="btnReset_Click" />
-                            <asp:Button ID="btnUpdate" class="btn btn-danger" runat="server" Text="Update" Style="width: 100px;" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnUpdate" class="btn btn-primary" runat="server" Text="Update" Style="width: 100px;" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnReset" class="btn btn-danger" runat="server" CausesValidation="false" Text="Reset" Style="width: 100px;" OnClick="btnReset_Click" />                            
                             <asp:HiddenField ID="hdnCityID" runat="server" />
                         </div>
-                    </form>
+                    </div>
                     <!--2nd row--->
-                    <asp:GridView ID="gdvCity" CssClass="table table-bordered datatable table-striped" runat="server" AutoGenerateColumns="False" OnRowDataBound="gdvcity_RowDataBound" >
+                    <asp:GridView ID="gdvCity" CssClass="table table-bordered datatable table-striped" runat="server"  ShowHeader="false" AutoGenerateColumns="False" OnRowDataBound="gdvcity_RowDataBound" >
                         <Columns>
                             <asp:BoundField DataField="CityID" HeaderText="City ID" ItemStyle-CssClass="hidden-bound">
                                 <ItemStyle CssClass="hidden-bound"></ItemStyle>
@@ -94,7 +99,8 @@
                                         <ul class="dropdown-menu pull-right" role="menu">
                                             <li>
                                                 <asp:LinkButton ID="lbtnLEdit" runat="server" Text="Edit" CausesValidation="False"
-                                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' OnClick="lbtnLEdit_Click"><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>
+                                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                     OnClick="lbtnLEdit_Click"><i class="fa fa-file-text-o"></i>Edit</asp:LinkButton>
                                             </li>
                                             <li>
                                                 <asp:LinkButton ID="lbtnLMarkAsInActive" runat="server" Text="MarkAsInActive" CausesValidation="False" OnClick="lbtnLMarkAsActive_Click"><i class="fa fa-file-text-o"></i>MarkAsInActive</asp:LinkButton>
@@ -142,39 +148,17 @@
             $("#AdminPlaceHolder_gdvCity").prepend($("<thead><tr><th class='hidden-bound'>CityID</th><th>State Name</th><th>City Name</th><th>Status</th><th>Actions</th></tr></thead>").append($(this).find("tr:first")));
             $("#AdminPlaceHolder_gdvCity").css('width', '100%');
             $("#AdminPlaceHolder_gdvCity").dataTable({
-                "pageLength": 50,
+                "pageLength": 10,
                 dom: 'Bfrtip',
                 buttons: [
-                    {
-                        extend: 'copy',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
-                    {
-                        extend: 'csv',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
+                   
                     {
                         extend: 'excel',
                         exportOptions: {
                             columns: [0, 1, 2, 3]
                         }
                     },
-                    {
-                        extend: 'pdf',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3]
-                        }
-                    },
+                    
 
                 ]
             });
@@ -184,7 +168,7 @@
 
 
 
-    </form>
+    
 
 
 

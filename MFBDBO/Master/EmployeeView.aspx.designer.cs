@@ -130,6 +130,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblGender;
         
         /// <summary>
+        /// DDLGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLGender;
+        
+        /// <summary>
         /// lblMS control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,15 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMS;
+        
+        /// <summary>
+        /// DDLMaritalStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLMaritalStatus;
         
         /// <summary>
         /// lblEmail control.
@@ -184,6 +202,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblAddress;
         
         /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        
+        /// <summary>
         /// lblDateOfJoin control.
         /// </summary>
         /// <remarks>
@@ -211,6 +238,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblRole;
         
         /// <summary>
+        /// DDLRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLRole;
+        
+        /// <summary>
         /// lblDepartment control.
         /// </summary>
         /// <remarks>
@@ -218,6 +254,15 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDepartment;
+        
+        /// <summary>
+        /// DDLDept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLDept;
         
         /// <summary>
         /// lblDesignation control.
@@ -229,6 +274,15 @@ namespace MFBDBO.Master {
         protected global::System.Web.UI.WebControls.Label lblDesignation;
         
         /// <summary>
+        /// DDLDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLDesignation;
+        
+        /// <summary>
         /// lblReportingManager control.
         /// </summary>
         /// <remarks>
@@ -236,6 +290,15 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblReportingManager;
+        
+        /// <summary>
+        /// DDLRManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLRManager;
         
         /// <summary>
         /// btnUpdate control.
@@ -254,5 +317,23 @@ namespace MFBDBO.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
+        
+        /// <summary>
+        /// hdnEmpId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnEmpId;
+        
+        /// <summary>
+        /// hdnStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnStatus;
     }
 }

@@ -10,16 +10,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-      <!-- Bootstrap 3.3.6 -->
+    <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <!--Date Picker-->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-     <!-- Ionicons -->
+    <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-     <!-- Select2 -->
+    <!-- Select2 -->
     <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
-      <!-- Theme style -->
+    <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
 
     <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
@@ -31,343 +31,353 @@
 
   <![endif]-->
     <style>
-        .select2-container{
-        width:100% !important
+        .select2-container {
+            width: 100% !important;
         }
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-        <header class="main-header">
-            <!-- Logo -->
-            <a href="index2.html" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>Admin</b></span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Admin</b></span>
-            </a>
-            <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="index2.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>Admin</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Admin</b></span>
                 </a>
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-sign-out"></i>Logout
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu">
+                                <asp:LinkButton ID="lbtnSignout" runat="server" OnClick="lbtnSignout_Click"><i class="fa fa-sign-out"></i> Signout</asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Admin</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+                        </div>
+                    </div>
+
+                    <!-- sidebar menu-->
+                    <!--Begin Ul-->
+                    <ul class="sidebar-menu">
+                        <!--1st-->
+                        <li>
+                            <a href="../Master/AdminDashboard.aspx">
+                                <i class="fa fa-home"></i><span>Dashboard</span>
+                            </a>
+                        </li>
+                        <!--2nd-->
+                        <li>
+                            <a href="../Master/SuppliersList.aspx">
+                                <i class="fa fa-files-o"></i><span>Suppliers</span>
+                            </a>
+                        </li>
+                        <!--3rd-->
+                        <li class="treeview">
+                            <a href="../Master/AllBookings.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>All Bookings</span>
+                            </a>
+                        </li>
+                        <!--4th-->
+                        <li class="treeview">
+                            <a href="../Master/OfflineRequests.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>Offline Requests</span>
+                            </a>
+                        </li>
+                        <!--5th-->
+                        <li class="treeview">
+                            <a href="../Master/Sales.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>Sales</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../SalesManagement/Leads.aspx"><i class="fa fa-circle-o"></i>Leads</a></li>
+                                <li><a href="../Master/Registrations.aspx"><i class="fa fa-circle-o"></i>Registrations</a></li>
+                                <li><a href="../Master/AssignTargets.aspx"><i class="fa fa-circle-o"></i>Assign Targets</a></li>
+                                <li><a href="../Master/MonthlyTargets.aspx"><i class="fa fa-circle-o"></i>Monthly Targets</a></li>
+                            </ul>
+                        </li>
+                        <!--6th-->
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-files-o"></i><span>Agents</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/ActiveAgents.aspx"><i class="fa fa-circle-o"></i>Agents List</a></li>
+                                <li><a href="../Master/Credits.aspx"><i class="fa fa-circle-o"></i>Credits</a></li>
+
+                            </ul>
+                        </li>
+                        <!--7th-->
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-files-o"></i><span>Invoice Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/GenerateInvoice.aspx"><i class="fa fa-circle-o"></i>Generate Invoice</a></li>
+                                <li><a href="../Master/Invoice.aspx"><i class="fa fa-circle-o"></i>Invoice List</a></li>
+                                <%-- <li><a href="../Master/PaymentsList.aspx"><i class="fa fa-circle-o"></i> Payments List</a></li>--%>
+                            </ul>
+                        </li>
+                        <!--8th-->
+                        <li class="treeview">
+                            <a href="HRM.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>HRM</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/EmployeeList.aspx"><i class="fa fa-circle-o"></i>Employee List</a></li>
+                                <li><a href="../Master/Department.aspx"><i class="fa fa-circle-o"></i>Department</a></li>
+                                <li><a href="../Master/Designation.aspx"><i class="fa fa-circle-o"></i>Designation</a></li>
+
+                            </ul>
+                        </li>
+                        <!--9th-->
+                        <li>
+                            <a href="Payroll.aspx">
+                                <i class="fa fa-files-o"></i><span>Payroll Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/SalaryTemplate.aspx"><i class="fa fa-circle-o"></i>Salary Template</a></li>
+                                <li><a href="../Master/Salary.aspx"><i class="fa fa-circle-o"></i>Salary</a></li>
+                                <li><a href="../Master/Payslips.aspx"><i class="fa fa-circle-o"></i>Payslips</a></li>
+                                <li><a href="../Master/SalaryReport.aspx"><i class="fa fa-circle-o"></i>Salary Report</a></li>
+                            </ul>
+                        </li>
+                        <!--10th-->
+                        <li>
+                            <a href="Attendance.aspx">
+                                <i class="fa fa-files-o"></i><span>Attendance Reports</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/MonthlyReport.aspx"><i class="fa fa-circle-o"></i>Monthly Report</a></li>
+                                <li><a href="../Master/YearlyReport.aspx"><i class="fa fa-circle-o"></i>Yearly Report</a></li>
+                                <li><a href="../Master/EmployeeAttendance.aspx"><i class="fa fa-circle-o"></i>Employee Attendance</a></li>
+                            </ul>
+                        </li>
+
+                        <!--11th-->
+                        <li class="treeview">
+                            <a href="../Master/UserManagement.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>User Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/Role.aspx"><i class="fa fa-circle-o"></i>Role</a></li>
+                                <li><a href="../Master/Users.aspx"><i class="fa fa-circle-o"></i>Users</a></li>
+                                <li><a href="../Master/Users.aspx"><i class="fa fa-circle-o"></i>Permissions</a></li>
+                            </ul>
+                        </li>
+                        <!--12th-->
+                        <li>
+                            <a href="Accounts.aspx">
+                                <i class="fa fa-files-o"></i><span>Accounts</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/IncentivesHRM.aspx"><i class="fa fa-circle-o"></i>Incentives</a></li>
+                                <li><a href="../Master/BanksList.aspx"><i class="fa fa-circle-o"></i>Bank List</a></li>
+                                <li><a href="../Master/MajorAccountList.aspx"><i class="fa fa-circle-o"></i>Major Accounts</a></li>
+                                <li><a href="../Master/MinorAccountList.aspx"><i class="fa fa-circle-o"></i>Minor Accounts</a></li>
+                                <li><a href="../Master/FinancialYearList.aspx"><i class="fa fa-circle-o"></i>Financial Year List</a></li>
+                                <li><a href="../Master/PaymentsList.aspx"><i class="fa fa-circle-o"></i>Payments</a></li>
+                                <li><a href="../Master/ReceiptsList.aspx"><i class="fa fa-circle-o"></i>Receipts</a></li>
+                            </ul>
+                        </li>
+                        <!--13th-->
+                        <li class="treeview">
+                            <a href="../Master/Settings.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>Settings</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/AgentSettings.aspx"><i class="fa fa-circle-o"></i>Agent Settings</a></li>
+                                <li><a href="../Master/MarginSettings.aspx"><i class="fa fa-circle-o"></i>Margin Settings</a></li>
+                                <li><a href="../Master/Documents.aspx"><i class="fa fa-circle-o"></i>Documents</a></li>
+                                <li><a href="../Master/Country.aspx"><i class="fa fa-circle-o"></i>Country</a></li>
+                                <li><a href="../Master/state.aspx"><i class="fa fa-circle-o"></i>State</a></li>
+                                <li><a href="../Master/city.aspx"><i class="fa fa-circle-o"></i>City</a></li>
+                            </ul>
+                        </li>
+                        <!--14th-->
+                        <li class="treeview">
+                            <a href="IssuesList.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>Issues</span>
+                            </a>
+                        </li>
+                        <!--15th-->
+                        <li class="treeview">
+                            <a href="Reports.aspx">
+                                <i class="fa fa-files-o"></i>
+                                <span>Reports</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="../Master/MonthWiseReports.aspx"><i class="fa fa-circle-o"></i>Month Wise</a></li>
+                                <li><a href="../Master/AgentWiseReports.aspx"><i class="fa fa-circle-o"></i>Agent Wise</a></li>
+                                <li><a href="../Master/StatusWiseReports.aspx"><i class="fa fa-circle-o"></i>Status Wise</a></li>
+                                <li><a href="../Reports/BookingByAgents.aspx"><i class="fa fa-circle-o"></i>Agents Report</a></li>
+                                <li><a href="../Reports/BookingBySuppliers.aspx"><i class="fa fa-circle-o"></i>Suppliers Report</a></li>
+                                <li><a href="../Reports/BookingByReport.aspx"><i class="fa fa-circle-o"></i>MFB Report</a></li>
+                                <li><a href="../Reports/BookingByReport.aspx"><i class="fa fa-circle-o"></i>Checkin Report</a></li>
+                            </ul>
+                        </li>
+                        <!--16th-->
+                        <li>
+                            <a href="../MainDashboard.aspx">
+                                <i class="fa fa-angle-right"></i><span>Back To Dashboard</span>
                             </a>
                         </li>
                     </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>Admin</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
-                    </div>
-                </div>
-
-                <!-- sidebar menu-->
-                <!--Begin Ul-->
-                <ul class="sidebar-menu">
-                    <!--1st-->
-                    <li>
-                        <a href="AdminDashboard.aspx">
-                            <i class="fa fa-home"></i><span>Dashboard</span>
-                        </a>
-                    </li>
-                    <!--2nd-->
-                    <li>
-                        <a href="SuppliersList.aspx">
-                            <i class="fa fa-files-o"></i><span>Suppliers</span>
-                        </a>
-                    </li>
-                    <!--3rd-->
-                    <li class="treeview">
-                        <a href="AllBookings.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>All Bookings</span>
-                        </a>
-                    </li>
-                    <!--4th-->
-                       <li class="treeview">
-                        <a href="OfflineRequests.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>Offline Requests</span>
-                        </a>
-                    </li>
-                      <!--5th-->
-                    <li class="treeview">
-                        <a href="Sales.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>Sales</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="Leads.aspx"><i class="fa fa-circle-o"></i>Leads</a></li>
-                            <li><a href="Registrations.aspx"><i class="fa fa-circle-o"></i>Registrations</a></li>
-                             <li><a href="AssignTargets.aspx"><i class="fa fa-circle-o"></i>Assign Targets</a></li>
-                              <li><a href="MonthlyTargets.aspx"><i class="fa fa-circle-o"></i>Monthly Targets</a></li>
-                        </ul>
-                    </li>
-                    <!--6th-->
-                    <li class="treeview">
-                    <a href="#"><i class="fa fa-files-o"></i><span>Agents</span>
-                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                          <ul class="treeview-menu">
-                            <li><a href="ActiveAgents.aspx"><i class="fa fa-circle-o"></i>Active Agents</a></li>
-                            <li><a href="Credits.aspx"><i class="fa fa-circle-o"></i>Credits</a></li>
-                          
-                        </ul>
-                    </li>
-                    <!--7th-->
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-files-o"></i><span>Invoice Management</span>
-                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                         <ul class="treeview-menu">
-                            <li><a href="GenerateInvoice.aspx"><i class="fa fa-circle-o"></i>Generate Invoice</a></li>
-                            <li><a href="Invoice.aspx"><i class="fa fa-circle-o"></i> Invoice List</a></li>
-                           <li><a href="PaymentsList.aspx"><i class="fa fa-circle-o"></i> Payments List</a></li>
-                        </ul>
-                    </li>
-                    <!--8th-->
-                    <li class="treeview">
-                        <a href="HRM.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>HRM</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="EmployeeList.aspx"><i class="fa fa-circle-o"></i>Employee List</a></li>
-                            <li><a href="Department.aspx"><i class="fa fa-circle-o"></i>Department</a></li>
-                           <li><a href="Designation.aspx"><i class="fa fa-circle-o"></i>Designation</a></li>
-                           
-                        </ul>
-                    </li>
-                      <!--9th-->
-                      <li>
-                        <a href="Payroll.aspx">
-                            <i class="fa fa-files-o"></i><span>Payroll Management</span>
-                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                         <ul class="treeview-menu">
-                            <li><a href="SalaryTemplate.aspx"><i class="fa fa-circle-o"></i>Salary Template</a></li>
-                            <li><a href="Salary.aspx"><i class="fa fa-circle-o"></i>Salary</a></li>
-                            <li><a href="Payslips.aspx"><i class="fa fa-circle-o"></i>Payslips</a></li>
-                            <li><a href="SalaryReport.aspx"><i class="fa fa-circle-o"></i>Salary Report</a></li>
-                        </ul>
-                    </li>
-                      <!--10th-->
-                      <li>
-                        <a href="Attendance.aspx">
-                            <i class="fa fa-files-o"></i><span>Attendance Reports</span>
-                             <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="MonthlyReport.aspx"><i class="fa fa-circle-o"></i>Monthly Report</a></li>
-                            <li><a href="YearlyReport.aspx"><i class="fa fa-circle-o"></i> Yearly Report</a></li>
-                           <li><a href="EmployeeAttendance.aspx"><i class="fa fa-circle-o"></i> Employee Attendance</a></li>
-                        </ul>
-                    </li>
-
-                    <!--11th-->
-                    <li class="treeview">
-                        <a href="UserManagement.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>User Management</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="Role.aspx"><i class="fa fa-circle-o"></i>Role</a></li>
-                            <li><a href="Users.aspx"><i class="fa fa-circle-o"></i>Users</a></li>
-                            <li><a href="Users.aspx"><i class="fa fa-circle-o"></i>Permissions</a></li>
-                        </ul>
-                    </li>
-                    <!--12th-->
-                    <li>
-                        <a href="Accounts.aspx">
-                            <i class="fa fa-files-o"></i><span>Accounts</span>
-                              <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                          <ul class="treeview-menu">
-                          <li><a href="IncentivesHRM.aspx"><i class="fa fa-circle-o"></i>Incentives</a></li>
-                              </ul>
-                    </li>
-                    <!--13th-->
-                    <li class="treeview">
-                        <a href="Settings.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>Settings</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="AgentSettings.aspx"><i class="fa fa-circle-o"></i>Agent Settings</a></li>
-                            <li><a href="MarginSettings.aspx"><i class="fa fa-circle-o"></i>Margin Settings</a></li>
-                            <li><a href="Documents.aspx"><i class="fa fa-circle-o"></i>Documents</a></li>
-                             <li><a href="Country.aspx"><i class="fa fa-circle-o"></i>Country</a></li>
-                        </ul>
-                    </li>
-                    <!--14th-->
-                    <li class="treeview">
-                        <a href="IssuesList.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>Issues</span>
-                        </a>
-                    </li>
-                    <!--15th-->
-                    <li class="treeview">
-                        <a href="Reports.aspx">
-                            <i class="fa fa-files-o"></i>
-                            <span>Reports</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="MonthWiseReports.aspx"><i class="fa fa-circle-o"></i>Month Wise</a></li>
-                            <li><a href="AgentWiseReports.aspx"><i class="fa fa-circle-o"></i>Agent Wise</a></li>
-                            <li><a href="StatusWiseReports.aspx"><i class="fa fa-circle-o"></i>Status Wise</a></li>
-                        </ul>
-                    </li>
-                       <!--16th-->
-                     <li>
-          <a href="../MainDashboard.aspx">
-            <i class="fa fa-angle-right"></i> <span>Back To Dashboard</span>
-          </a>
-        </li>
-
-                </ul>
-                <!--End Ul-->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <asp:ContentPlaceHolder ID="AdminPlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2018-2010 <a href="#">Developers Code</a>.</strong> All rights
+                    <!--End Ul-->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <asp:ContentPlaceHolder ID="AdminPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2018-2010 <a href="#">Developers Code</a>.</strong> All rights
     reserved.
-        </footer>
-    </div>
-    <!-- ./wrapper -->
-
-   
-    <!-- jQuery 2.2.3 -->
-    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-     <!-- Bootstrap 3.3.6 -->
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-     <!--Data Tables-->
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <!--app.min.js-->
-    <script src="../dist/js/app.min.js"></script>
-    <!-- Bar Chart -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<!-- FLOT CHARTS -->
-<script src="../plugins/flot/jquery.flot.min.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="../plugins/flot/jquery.flot.categories.min.js"></script>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            </footer>
+        </div>
+        <!-- ./wrapper -->
 
 
-    <!--Select2 script-->
-    <script src="../../plugins/select2/select2.full.min.js"></script>
-    <!--Data Tables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" />
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
-    <link type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link type="text/css" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+        <!-- jQuery 2.2.3 -->
+        <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <!--Data Tables-->
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <!--app.min.js-->
+        <script src="../dist/js/app.min.js"></script>
+        <!-- Bar Chart -->
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- FLOT CHARTS -->
+        <script src="../plugins/flot/jquery.flot.min.js"></script>
+        <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+        <script src="../plugins/flot/jquery.flot.categories.min.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-    <script type="text/javascript">
 
-        //Bar Chart
-        $(function () {
-            "use strict";
-            var bar_data = {
-                data: [["January", 12], ["Feb", 10], ["March", 4], ["April", 13], ["May", 17], ["June", 13], ["July", 15], ["August", 12], ["September", 16], ["October", 18], ["November", 15], ["December", 20]],
-                color: "#3c8dbc"
-            };
-            $.plot("#bar-chart", [bar_data], {
-                grid: {
-                    borderWidth: 1,
-                    borderColor: "#f3f3f3",
-                    tickColor: "#f3f3f3"
-                },
-                series: {
-                    bars: {
-                        show: true,
-                        barWidth: 0.5,
-                        align: "center"
+        <!--Select2 script-->
+        <script src="../../plugins/select2/select2.full.min.js"></script>
+        <!--Data Tables-->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" />
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+        <link type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link type="text/css" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+
+        <script type="text/javascript">
+
+            //Bar Chart
+            $(function () {
+                "use strict";
+                var bar_data = {
+                    data: [["January", 12], ["Feb", 10], ["March", 4], ["April", 13], ["May", 17], ["June", 13], ["July", 15], ["August", 12], ["September", 16], ["October", 18], ["November", 15], ["December", 20]],
+                    color: "#3c8dbc"
+                };
+                $.plot("#bar-chart", [bar_data], {
+                    grid: {
+                        borderWidth: 1,
+                        borderColor: "#f3f3f3",
+                        tickColor: "#f3f3f3"
+                    },
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: 0.5,
+                            align: "center"
+                        }
+                    },
+                    xaxis: {
+                        mode: "categories",
+                        tickLength: 0
                     }
-                },
-                xaxis: {
-                    mode: "categories",
-                    tickLength: 0
-                }
+                });
             });
-        });
 
 
-        //Data Table Function
-        $('#bookings').dataTable({
-            "pageLength": 50,
-            dom: 'frtip',
-            responsive: true
-        });
-       
-        //Select2 Function
-        $(function () {
-            $(".select2").select2();
-        });
+            //Data Table Function
+            $('#bookings').dataTable({
+                "pageLength": 50,
+                dom: 'frtip',
+                responsive: true
+            });
 
-    </script>
+            //Select2 Function
+            $(function () {
+                $(".select2").select2();
+            });
 
+        </script>
+    </form>
 </body>
 </html>

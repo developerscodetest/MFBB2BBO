@@ -33,6 +33,13 @@ namespace MFBDBO.Data
                     con.Open();
                 }
                 MySqlDataReader dr = cmd.ExecuteReader();
+                if (!dr.HasRows)
+                {
+                    obj.Add(new Statetbl
+                    {
+                        Message = "Success",
+                    });
+                }
                 while (dr.Read())
                 {
                     obj.Add(new Statetbl
@@ -49,6 +56,7 @@ namespace MFBDBO.Data
 
                     });
                 }
+               
                 dr.Close();
 
             }

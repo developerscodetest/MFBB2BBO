@@ -13,5 +13,10 @@ namespace MFBDBO.Master
         {
 
         }
+        protected void lbtnSignout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
     }
 }

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="AdminPlaceHolder" runat="server">
-    <form runat="server">
+    
         <section class="content-header">
             <h1>View</h1>
             <ol class="breadcrumb">
@@ -25,19 +25,23 @@
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
+                        <asp:RequiredFieldValidator ID="rfvFDate" runat="server" ErrorMessage="From Date is Required" ForeColor="Red" ControlToValidate="txtFDate" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group col-md-4">
                         <asp:Label ID="lblToDate" class="control-label required" runat="server" Text="To Date"><b>To Date :</b></asp:Label>
                         <div class="input-group date">
-                            <asp:TextBox ID="txtTDate" type="date" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtTDate" type="date" CssClass="form-control" runat="server"></asp:TextBox>                           
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
+                        <asp:RequiredFieldValidator ID="rfvTDate" runat="server" ErrorMessage="To Date is Required" ForeColor="Red" ControlToValidate="txtTDate" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group col-md-4">
                         <asp:Label ID="lblMTemplate" class="control-label required" runat="server" Text="Management Template"><b>Management Template :</b></asp:Label>
-                        <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtMTemp" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvMTemp" runat="server" ErrorMessage="Management Template is Required" ForeColor="Red" ControlToValidate="txtMTemp" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revMTemp" runat="server" ErrorMessage="Name Must be Alphabets" ForeColor="Red" ControlToValidate="txtMTemp" ValidationExpression="^[a-zA-Z'.\s]{1,100}$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <p>&nbsp;</p>
@@ -89,18 +93,18 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
                 <!-- End form2-->
                 <hr />
                 <div class="col-md-6 modal-footer pull-right">
                     <asp:Button ID="btnSave" class="btn btn-primary" runat="server" Text="Save" Style="width: 100px" />
-                    <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px" />
-                    <asp:Button ID="btnBack" class="btn btn-danger" PostBackUrl="~/Master/SalaryTemplate.aspx" runat="server" Text="Back" Style="width: 100px" />
+                    <asp:Button ID="btnReset" class="btn btn-danger" runat="server" Text="Reset" Style="width: 100px"  CausesValidation="False" />
+                    <asp:Button ID="btnBack" class="btn btn-danger" PostBackUrl="~/Master/SalaryTemplate.aspx" runat="server" Text="Back" Style="width: 100px"  CausesValidation="False" />
 
                 </div>
                 <!-- /.box-body-->
             </div>
         </section>
 
-    </form>
+    
 </asp:Content>
